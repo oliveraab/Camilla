@@ -11,75 +11,100 @@ interface Project {
   id: number;
   title: { en: string; no: string };
   description: { en: string; no: string };
+  detailedDescription: { en: string; no: string };
   image: string;
   details: { en: string; no: string };
   features: { en: string[]; no: string[] };
   technologies: string[];
+  embed?: {
+    type: 'figma' | 'youtube';
+    url: string;
+  };
 }
 
 const projects: Project[] = [
   {
     id: 1,
     title: {
-      en: "Project 1",
-      no: "Prosjekt 1"
+      en: "WattCast - Forecasting Energy Consumption",
+      no: "WattCast - Prognose for Energiforbruk"
     },
     description: {
-      en: "A brief description of the first project.",
-      no: "En kort beskrivelse av det første prosjektet."
+      en: "Android application that forecast electricity prices.",
+      no: "Android Applikasjon som predikerer strømpris."
     },
-    image: "/placeholder.svg?height=400&width=600",
+    detailedDescription: {
+      en: "In the IN2000 (Software Engineering with Project Work) course at the University of Oslo, I worked for most of the semester in an interdisciplinary team developing an Android application called WattCast. The app helps users predict electricity prices based on historical data and weather conditions, allowing them to optimize their electricity consumption and save money.\n\nIn this project, I was primarily responsible for the design process, from the early stages of data collection and user testing to the final visual design in Figma. I also contributed to the implementation of the user interface in Android Studio using Kotlin. Throughout the process, I worked closely with the team to ensure that the design was not only aesthetically pleasing but also functional and user-friendly.\n\nOne of the biggest challenges was presenting electricity prices and weather forecasts in a way that was easy for users to understand. After several iterations of wireframing and prototyping, we settled on a design that presented both real-time and future electricity prices in a clear and concise manner. To make this possible, we used multiple linear regression to estimate electricity prices, which became a key feature of the app.\n\nThis project gave me valuable experience in user-oriented design and teamwork, as well as a deeper understanding of agile methods such as Scrumban for project management. Throughout the process, I learned how effective communication between design and development can ensure successful implementation of complex solutions.",
+      no: "I emnet IN2000 (Software Engineering med prosjektarbeid) ved Universitetet i Oslo jobbet jeg store deler av semesteret i et tverrfaglig team som utviklet en Android-applikasjon kalt WattCast. Appen hjelper brukere med å predikere strømpriser basert på historisk data og værforhold, slik at de kan optimalisere sitt strømforbruk og spare penger.\n\nI prosjektet hadde jeg hovedansvaret for designprosessen, fra de tidlige fasene med datainnsamling og brukertesting til den endelige visuelle utformingen i Figma. Jeg bidro også til implementeringen av brukergrensesnittet i Android Studio ved hjelp av Kotlin. Gjennom hele prosessen jobbet jeg tett med teamet for å sikre at designet ikke bare var estetisk tiltalende, men også funksjonelt og brukervennlig.\n\nEn av de største utfordringene var å presentere strømpriser og værprognoser på en måte som var enkel for brukerne å forstå. Etter flere iterasjoner med wireframing og prototyping landet vi på et design som presenterte både sanntids- og fremtidige strømpriser på en klar og oversiktlig måte. For å gjøre dette mulig brukte vi multippel lineær regresjon for å estimere strømpriser, som ble en nøkkelfunksjon i appen.\n\nDette prosjektet ga meg verdifull erfaring med brukerorientert design og teamarbeid, samt en dypere forståelse av smidige metoder som Scrumban for prosjektstyring. Gjennom hele prosessen lærte jeg hvordan effektiv kommunikasjon mellom design og utvikling kan sikre en vellykket implementering av komplekse løsninger."
+    },
+    image: "/images/1.4.png",
     details: {
-      en: "This is a detailed description of Project 1. Here you can provide more information about the project, including its goals, challenges, and outcomes.",
-      no: "Dette er en detaljert beskrivelse av Prosjekt 1. Her kan du gi mer informasjon om prosjektet, inkludert mål, utfordringer og resultater."
+      en: "This project demonstrates an interactive prototype created in Figma for the IN2000 course. It showcases the user interface design and flow of a mobile application.",
+      no: "Dette prosjektet demonstrerer en interaktiv prototype laget i Figma for IN2000-kurset. Det viser brukergrensesnittdesignet og flyten i en mobilapplikasjon."
     },
     features: {
-      en: ["Feature 1", "Feature 2", "Feature 3"],
-      no: ["Funksjon 1", "Funksjon 2", "Funksjon 3"]
+      en: ["Responsive Design", "User Flow Demonstration", "Interactive Elements"],
+      no: ["Responsivt Design", "Demonstrasjon av Brukerflyt", "Interaktive Elementer"]
     },
-    technologies: ["React", "Next.js", "Tailwind CSS"],
+    technologies: ["Figma", "UI/UX Design", "Prototyping"],
+    embed: {
+      type: 'figma',
+      url: 'https://embed.figma.com/proto/MJjT1oMm9SgKzokqedp5LG/IN2000-prosjekt?node-id=12-3&starting-point-node-id=12%3A3&show-proto-sidebar=0&embed-host=share'
+    }
   },
   {
     id: 2,
     title: {
-      en: "Project 2",
-      no: "Prosjekt 2"
+      en: "Deep Dialogue - Technology for Democracy",
+      no: "Dyp Dialog - Teknologi for Demokrati"
     },
     description: {
-      en: "A brief description of the second project.",
-      no: "En kort beskrivelse av det andre prosjektet."
+      en: "Interactive dialogue with AI-generated politicians.",
+      no: "Interaktiv dialog med AI-genererte politikere."
     },
-    image: "/placeholder.svg?height=400&width=600",
+    detailedDescription: {
+      en: "In the IN3010 (Transformative Design) course, my group worked on a project where we were tasked with developing a technology that promoted political engagement. We were then to explore how this technology could lead to either a utopia or a dystopia. We developed the concept of DeepDialogue, a physical installation where the population could engage in conversations with AI-generated politicians.\n\nDeepDialogue was designed as a response to the challenge of declining voter turnout. The technology allowed users to ask questions to AI politicians and engage in realistic political discussions in real-time.\n\nThroughout the project, we used several design methods to ensure that the solution was both relevant and feasible.\n\nAs a result, my group created a video to show what such a technology could look like and how it could contribute to a future dystopia. My main responsibility in this video prototype was to create the news broadcasts.",
+      no: "I IN3010 (Transformativt design) jobbet gruppen min med et prosjekt der vi skulle utvikle en teknologi som fremmet politisk engasjement. Deretter skulle vi utforske hvordan denne teknologien kunne lede til enten en utopi eller en dystopi. Vi utviklet konseptet DypDialog, en fysisk installasjon der befolkningen kunne delta i samtaler med AI-genererte politikere.\n\nDypDialog ble utformet som et svar på utfordringen med synkende valgdeltakelse. Teknologien gjorde det mulig for brukerne å stille spørsmål til AI-politikere og engasjere seg i realistiske politiske diskusjoner i sanntid. \n\nI løpet av prosjektet brukte vi flere designmetoder for å sikre at løsningen var både relevant og gjennomførbar.\n\nMin gruppe lagde av den grunn en video for å vise hvordan en slik teknologi kunne se ut og hvordan den kunne bidra til en fremtidig dystopi. Mitt hovedansvar i denne videoprototypen var å lage nyhetssendingene."
+    },
+    image: "/images/3.7.png",
     details: {
-      en: "This is a detailed description of Project 2. Here you can provide more information about the project, including its goals, challenges, and outcomes.",
-      no: "Dette er en detaljert beskrivelse av Prosjekt 2. Her kan du gi mer informasjon om prosjektet, inkludert mål, utfordringer og resultater."
+      en: "This video provides an in-depth look at the project, highlighting its main features and demonstrating its functionality in real-time.",
+      no: "Denne videoen gir et dyptgående innblikk i prosjektet, fremhever hovedfunksjonene og demonstrerer funksjonaliteten i sanntid."
     },
     features: {
-      en: ["Feature 1", "Feature 2", "Feature 3"],
-      no: ["Funksjon 1", "Funksjon 2", "Funksjon 3"]
+      en: ["Live Demo", "Feature Walkthrough", "User Guide"],
+      no: ["Live Demonstrasjon", "Funksjonsgjennomgang", "Brukerveiledning"]
     },
-    technologies: ["Vue.js", "Nuxt.js", "SCSS"],
+    technologies: ["Video Production", "Screencast", "Product Demo"],
+    embed: {
+      type: 'youtube',
+      url: 'https://www.youtube.com/embed/Syj3hNSmpEs?si=gS8OJ97Zv1FfarIe&amp;start=288'
+    }
   },
   {
     id: 3,
     title: {
-      en: "Project 3",
-      no: "Prosjekt 3"
+      en: "Gelaquiz - Quiz Game",
+      no: "Gelaquiz - Quizspill"
     },
     description: {
-      en: "A brief description of the third project.",
-      no: "En kort beskrivelse av det tredje prosjektet."
+      en: "Physical quiz-game with the purpose of promoting social interaction & cognitive training for the elderly.",
+      no: "Fysisk quiz-spill med formål å fremme sosial interaksjon & kognitiv trening for eldre."
     },
-    image: "/placeholder.svg?height=400&width=600",
+    detailedDescription: {
+      en: "During the IN1060 (Use-Oriented Design) course, I had a project where we developed a prototype called GelaQuiz, aimed at promoting social interaction and cognitive training for the elderly. Our target group was seniors aged 75-85 at a nursing home, and the project focused on reducing cognitive decline through engaging conversations and activities.\n\nAs the group leader, my responsibilities included coordinating the work in the team, ensuring progress, and keeping track of milestones. I established an internal work contract that helped improve group dynamics, and we set clear communication rules to ensure a smooth process. We started the project with a thorough investigation of the users through qualitative methods such as observations and semi-structured interviews to map out their needs and challenges.\n\nThrough an iterative design process, we developed several versions of the prototype based on feedback from the target group. We started with low-fidelity sketches, and the users were actively involved in all design decisions. The GelaQuiz prototype was designed to be easy to use, without time constraints, to encourage discussion and collaboration among players. It consisted of a main console and controllers with colored buttons, making it easy for users to participate in the quiz game.\n\nTechnically, the prototype was built using Arduino and Processing to implement the functionality. The game read out the questions and allowed users to answer with color-coded buttons, tailored to the elderly's need for simple and intuitive interactions.\n\nThrough user testing, the prototype proved to be an effective conversation starter, creating a high degree of social interaction. Although we faced some challenges with resources and time, especially in terms of the number of questions and the aesthetics of the product, the feedback from users was very positive. They appreciated the quiz questions and engaged in discussions around the answers.\n\nThis experience taught me the importance of user involvement, iterative design, and clear project management. The project met our goal of promoting both cognitive training and social interaction, and it was a great learning point to work so closely with users to ensure that our solutions actually addressed their needs.",
+      no: "I løpet av emnet IN1060 (Bruksorientert design) hadde jeg et prosjekt hvor vi utviklet en prototype kalt GelaQuiz, med formål om å fremme sosial interaksjon og kognitiv trening for eldre. Vår målgruppe var eldre i alderen 75-85 på et eldrehjem, og prosjektet fokuserte på å redusere kognitiv svekkelse gjennom engasjerende samtaler og aktiviteter.\n\nSom gruppeleder var mitt ansvar å koordinere arbeidet i teamet, sørge for fremdrift og holde oversikt over milepæler. Jeg opprettet en intern arbeidskontrakt som hjalp med å forbedre gruppedynamikken, og vi etablerte klare kommunikasjonsregler for å sikre en jevn prosess. Vi startet prosjektet med en grundig undersøkelse av brukerne gjennom kvalitative metoder som observasjoner og semi-strukturerte intervjuer for å kartlegge deres behov og utfordringer.\n\nGjennom en iterativ designprosess, utviklet vi flere versjoner av prototypen basert på tilbakemeldinger fra målgruppen. Vi begynte med lavoppløselige skisser, og brukerne var aktivt involvert i alle designavgjørelser. Prototypen GelaQuiz ble utformet for å være enkel å bruke, uten tidsbegrensning, for å oppmuntre til diskusjon og samarbeid mellom spillerne. Den besto av en hovedkonsoll og kontrollere med fargede knapper, som gjorde det enkelt for brukerne å delta i quiz-spillet.\n\nTeknisk sett ble prototypen bygget ved hjelp av Arduino og Processing for å implementere funksjonaliteten. Spillet leste opp spørsmålene og ga brukerne mulighet til å svare med fargekodede knapper, noe som var tilpasset de eldres behov for enkle og intuitive interaksjoner.\n\nGjennom sluttbrukertesting viste prototypen seg å være en effektiv samtalestarter, og den skapte høy grad av sosialt samspill. Selv om vi møtte noen utfordringer med ressurser og tid, spesielt når det gjaldt antall spørsmål og estetikken på produktet, var tilbakemeldingene fra brukerne svært positive. De satte pris på quiz-spørsmålene og engasjerte seg i diskusjoner rundt svarene.\n\nDenne erfaringen lærte meg viktigheten av brukermedvirkning, iterativ design og tydelig prosjektledelse. Prosjektet oppfylte vårt mål om å fremme både kognitiv trening og sosial interaksjon, og det var et stort læringspunkt å jobbe så tett med brukere for å sikre at våre løsninger faktisk svarte på deres behov."
+    },
+    image: "/images/2.1.png?height=400&width=600",
     details: {
-      en: "This is a detailed description of Project 3. Here you can provide more information about the project, including its goals, challenges, and outcomes.",
-      no: "Dette er en detaljert beskrivelse av Prosjekt 3. Her kan du gi mer informasjon om prosjektet, inkludert mål, utfordringer og resultater."
+      en: "This project is a comprehensive web application that demonstrates proficiency in both front-end and back-end technologies.",
+      no: "Dette prosjektet er en omfattende webapplikasjon som demonstrerer kompetanse i både front-end og back-end teknologier."
     },
     features: {
-      en: ["Feature 1", "Feature 2", "Feature 3"],
-      no: ["Funksjon 1", "Funksjon 2", "Funksjon 3"]
+      en: ["Responsive Design", "RESTful API", "Real-time Updates"],
+      no: ["Responsivt Design", "RESTful API", "Sanntidsoppdateringer"]
     },
-    technologies: ["Angular", "TypeScript", "Material UI"],
+    technologies: ["React", "Node.js", "MongoDB", "WebSocket"],
   },
 ];
 
@@ -92,6 +117,8 @@ function Modal({
   onClose: () => void;
   lang: 'en' | 'no';
 }) {
+  const [showFullDescription, setShowFullDescription] = useState(false);
+
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
@@ -106,6 +133,77 @@ function Modal({
     };
   }, [onClose]);
 
+  const renderEmbed = () => {
+    if (project.embed) {
+      if (project.embed.type === 'figma') {
+        return (
+          <div className="aspect-video mb-6 overflow-hidden rounded-lg">
+            <iframe 
+              style={{border: '1px solid rgba(0, 0, 0, 0.1)'}} 
+              width="100%" 
+              height="100%" 
+              src={project.embed.url}
+              allowFullScreen
+              className="w-full h-full"
+            ></iframe>
+          </div>
+        );
+      } else if (project.embed.type === 'youtube') {
+        return (
+          <div className="aspect-video mb-6 overflow-hidden rounded-lg">
+            <iframe 
+              width="100%" 
+              height="100%" 
+              src={project.embed.url}
+              title="YouTube video player" 
+              frameBorder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+              className="w-full h-full"
+            ></iframe>
+          </div>
+        );
+      }
+    }
+    return (
+      <div className="aspect-video mb-6 overflow-hidden rounded-lg">
+        <Image
+          src={project.image}
+          alt={project.title[lang]}
+          width={600}
+          height={400}
+          className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+        />
+      </div>
+    );
+  };
+
+  const renderDescription = () => {
+    const paragraphs = project.detailedDescription[lang].split('\n\n');
+    const visibleParagraphs = showFullDescription ? paragraphs : [paragraphs[0]];
+
+    return (
+      <>
+        {visibleParagraphs.map((paragraph, index) => (
+          <p key={index} className="text-gray-600 mb-4 leading-relaxed text-lg">
+            {paragraph}
+          </p>
+        ))}
+        {paragraphs.length > 1 && (
+          <button
+            onClick={() => setShowFullDescription(!showFullDescription)}
+            className="text-teal-600 hover:text-teal-700 font-medium mt-2"
+          >
+            {showFullDescription 
+              ? (lang === 'en' ? 'Show less' : 'Vis mindre') 
+              : (lang === 'en' ? 'Read more' : 'Les mer')}
+          </button>
+        )}
+      </>
+    );
+  };
+
   return (
     <motion.div 
       initial={{ opacity: 0 }}
@@ -118,7 +216,7 @@ function Modal({
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.9, opacity: 0 }}
-        className="bg-white rounded-lg shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto"
+        className="bg-white rounded-lg shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="p-8">
@@ -147,16 +245,10 @@ function Modal({
               </svg>
             </button>
           </div>
-          <div className="aspect-video mb-6 overflow-hidden rounded-lg">
-            <Image
-              src={project.image}
-              alt={project.title[lang]}
-              width={600}
-              height={400}
-              className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-            />
+          {renderEmbed()}
+          <div className="mb-6">
+            {renderDescription()}
           </div>
-          <p className="text-gray-600 mb-6 leading-relaxed text-lg">{project.details[lang]}</p>
           <div className="grid md:grid-cols-2 gap-6">
             <div>
               <h3 className="text-2xl font-semibold text-gray-900 mb-3">
@@ -180,14 +272,6 @@ function Modal({
                 ))}
               </div>
             </div>
-          </div>
-          <div className="mt-8">
-            <Link
-              href="#"
-              className="inline-flex h-12 items-center justify-center rounded-md bg-teal-500 px-8 text-base font-medium text-white shadow transition-colors hover:bg-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
-            >
-              {lang === 'en' ? 'View Live Project' : 'Se Live Prosjekt'}
-            </Link>
           </div>
         </div>
       </motion.div>
@@ -282,7 +366,7 @@ export default function PortfolioPage() {
                   href="#"
                   className="inline-flex h-12 items-center justify-center rounded-md bg-teal-500 px-8 text-base font-medium text-white shadow transition-colors hover:bg-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
                 >
-                  {lang === 'en' ? 'View Resume' : 'Se CV'}
+                  {lang === 'en' ? 'View Resume' : 'CV'}
                 </Link>
               </motion.div>
             </div>
@@ -292,7 +376,7 @@ export default function PortfolioPage() {
             >
               <div className="relative w-full max-w-[400px] aspect-square">
                 <Image
-                  src="/placeholder.svg?height=400&width=400"
+                  src="/images/camilla.jpg?height=400&width=400"
                   fill
                   alt="Camilla Szlagor"
                   className="rounded-2xl object-cover shadow-lg"
@@ -319,7 +403,7 @@ export default function PortfolioPage() {
           transition={{ duration: 1 }}
         >
           <h2 className="text-4xl font-bold mb-12 text-center text-gray-900">
-            {lang === 'en' ?  'My Projects' : 'Mine Prosjekter'}
+            {lang === 'en' ? 'My Projects' : 'Mine Prosjekter'}
           </h2>
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {projects.map((project, index) => (
