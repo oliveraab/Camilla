@@ -281,11 +281,9 @@ function Modal({
   );
 }
 
-
-
 export default function PortfolioPage() {
-  const [selectedProject, setSelectedProject] = useState(null);
-  const [lang, setLang] = useState('en');
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [lang, setLang] = useState<'en' | 'no'>('en');
 
   const toggleLang = () => {
     setLang(lang === 'en' ? 'no' : 'en');
@@ -370,7 +368,7 @@ export default function PortfolioPage() {
                   href="#"
                   className="inline-flex h-12 items-center justify-center rounded-md bg-slate-800 px-8 text-base font-medium text-white shadow transition-colors hover:bg-slate-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-500 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 font-mono"
                 >
-                  {lang === 'en' ? 'View Resume' : 'CV'}
+                  {lang === 'en' ? 'View Resume' : 'Se CV'}
                 </Link>
               </motion.div>
             </div>
@@ -380,7 +378,7 @@ export default function PortfolioPage() {
             >
               <div className="relative w-full max-w-[400px] aspect-square">
                 <Image
-                  src="/images/camilla.jpg?height=400&width=400"
+                  src="/images/camilla.jpg"
                   fill
                   alt="Camilla Szlagor"
                   className="rounded-2xl object-cover shadow-lg"
