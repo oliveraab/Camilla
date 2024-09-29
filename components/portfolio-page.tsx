@@ -26,8 +26,8 @@ const projects: Project[] = [
   {
     id: 1,
     title: {
-      en: "WattCast - Forecasting Energy Consumption",
-      no: "WattCast - Prognose for Energiforbruk"
+      en: "WattCast",
+      no: "WattCast"
     },
     description: {
       en: "Android application that forecast electricity prices.",
@@ -43,10 +43,10 @@ const projects: Project[] = [
       no: "Dette prosjektet demonstrerer en interaktiv prototype laget i Figma for IN2000-kurset. Det viser brukergrensesnittdesignet og flyten i en mobilapplikasjon."
     },
     features: {
-      en: ["Responsive Design", "User Flow Demonstration", "Interactive Elements"],
-      no: ["Responsivt Design", "Demonstrasjon av Brukerflyt", "Interaktive Elementer"]
+      en: ["Prototyping", "API Usage", "Interview", "Agile Methodology", "User Testing", "Workshop", "Use Case Diagram", "Sequence Diagram", "Class Diagram", "Multiple Linear Regression", "Unit Testing", "Integration Testing", "System Testing", "Acceptance Testing"],
+      no: ["Prototyping", "API-bruk", "Intervju", "Smidig metodikk", "Brukertesting","Workshop","Use Case Diagram","Sekvensdiagram","Klassediagram", "Multippel lineær regresjon", "Enhetstesting", "Integrasjonstesting", "Systemtesting", "Akseptansetesting"]
     },
-    technologies: ["Figma", "UI/UX Design", "Prototyping"],
+    technologies: ["Figma","Kotlin", "Android Studio", "Miro"],
     embed: {
       type: 'figma',
       url: 'https://embed.figma.com/proto/MJjT1oMm9SgKzokqedp5LG/IN2000-prosjekt?node-id=12-3&starting-point-node-id=12%3A3&show-proto-sidebar=0&embed-host=share'
@@ -55,8 +55,8 @@ const projects: Project[] = [
   {
     id: 2,
     title: {
-      en: "Deep Dialogue - Technology for Democracy",
-      no: "Dyp Dialog - Teknologi for Demokrati"
+      en: "Deep Dialogue",
+      no: "Dyp Dialog"
     },
     description: {
       en: "Interactive dialogue with AI-generated politicians.",
@@ -72,10 +72,11 @@ const projects: Project[] = [
       no: "Denne videoen gir et dyptgående innblikk i prosjektet, fremhever hovedfunksjonene og demonstrerer funksjonaliteten i sanntid."
     },
     features: {
-      en: ["Live Demo", "Feature Walkthrough", "User Guide"],
-      no: ["Live Demonstrasjon", "Funksjonsgjennomgang", "Brukerveiledning"]
+      en: ["Gigamapping", "Backcasting","Coverstory","Iceberg Model","Tarot Card Method", "Fabulation", "Prototyping" ],
+      no: ["Gigamapping", "Backcasting","Coverstory","Iceberg Model","Tarot Card Method", "Fabulation", "Prototyping" ]
     },
-    technologies: ["Video Production", "Screencast", "Product Demo"],
+    technologies: ["Figma", "HeyGen", "Canva","DALL·E 3", "narakeet", "Miro"
+],
     embed: {
       type: 'youtube',
       url: 'https://www.youtube.com/embed/Syj3hNSmpEs?si=gS8OJ97Zv1FfarIe&amp;start=288'
@@ -84,12 +85,12 @@ const projects: Project[] = [
   {
     id: 3,
     title: {
-      en: "Gelaquiz - Quiz Game",
-      no: "Gelaquiz - Quizspill"
+      en: "Gelaquiz",
+      no: "Gelaquiz"
     },
     description: {
-      en: "Physical quiz-game with the purpose of promoting social interaction & cognitive training for the elderly.",
-      no: "Fysisk quiz-spill med formål å fremme sosial interaksjon & kognitiv trening for eldre."
+      en: "Social interaction & cognitive excecise for the elderly.",
+      no: "Sosial interaksjon & kognitiv trening for eldre."
     },
     detailedDescription: {
       en: "During the IN1060 (Use-Oriented Design) course, I had a project where we developed a prototype called GelaQuiz, aimed at promoting social interaction and cognitive training for the elderly. Our target group was seniors aged 75-85 at a nursing home, and the project focused on reducing cognitive decline through engaging conversations and activities.\n\nAs the group leader, my responsibilities included coordinating the work in the team, ensuring progress, and keeping track of milestones. I established an internal work contract that helped improve group dynamics, and we set clear communication rules to ensure a smooth process. We started the project with a thorough investigation of the users through qualitative methods such as observations and semi-structured interviews to map out their needs and challenges.\n\nThrough an iterative design process, we developed several versions of the prototype based on feedback from the target group. We started with low-fidelity sketches, and the users were actively involved in all design decisions. The GelaQuiz prototype was designed to be easy to use, without time constraints, to encourage discussion and collaboration among players. It consisted of a main console and controllers with colored buttons, making it easy for users to participate in the quiz game.\n\nTechnically, the prototype was built using Arduino and Processing to implement the functionality. The game read out the questions and allowed users to answer with color-coded buttons, tailored to the elderly's need for simple and intuitive interactions.\n\nThrough user testing, the prototype proved to be an effective conversation starter, creating a high degree of social interaction. Although we faced some challenges with resources and time, especially in terms of the number of questions and the aesthetics of the product, the feedback from users was very positive. They appreciated the quiz questions and engaged in discussions around the answers.\n\nThis experience taught me the importance of user involvement, iterative design, and clear project management. The project met our goal of promoting both cognitive training and social interaction, and it was a great learning point to work so closely with users to ensure that our solutions actually addressed their needs.",
@@ -101,10 +102,10 @@ const projects: Project[] = [
       no: "Dette prosjektet er en omfattende webapplikasjon som demonstrerer kompetanse i både front-end og back-end teknologier."
     },
     features: {
-      en: ["Responsive Design", "RESTful API", "Real-time Updates"],
-      no: ["Responsivt Design", "RESTful API", "Sanntidsoppdateringer"]
+      en: ["Prototyping", "Observation","Interview", "Workshop", "Mind Map", "User Testing", "Thematic Analysis" ],
+      no: ["Prototyping", "Observasjon","Intervju", "Workshop", "Tankekart", "Brukertesting", "Tematisk Analyse" ]
     },
-    technologies: ["React", "Node.js", "MongoDB", "WebSocket"],
+    technologies: ["Emmbedded", "Arduino IDE","C++","3D Printing"],
   },
 ];
 
@@ -278,10 +279,9 @@ function Modal({
     </motion.div>
   );
 }
-
 export default function PortfolioPage() {
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [lang, setLang] = useState<'en' | 'no'>('en');
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [lang, setLang] = useState('en');
 
   const toggleLang = () => {
     setLang(lang === 'en' ? 'no' : 'en');
@@ -306,19 +306,19 @@ export default function PortfolioPage() {
   };
 
   return (
-    <div className="bg-gradient-to-br from-gray-50 to-teal-50 min-h-screen font-sans overflow-hidden">
+    <div className="bg-slate-50 min-h-screen font-sans overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <header className="py-6 flex justify-between items-center sticky top-0 z-10 bg-opacity-80 backdrop-blur-sm">
-          <h1 className="text-2xl font-bold text-gray-900">
+        <header className="py-6 flex justify-between items-center sticky top-0 z-10 bg-slate-50 bg-opacity-80 backdrop-blur-sm">
+          <h1 className="text-2xl font-bold text-slate-800 font-mono">
             {lang === 'en' ? 'Portfolio' : 'Portefølje'}
           </h1>
           <button
             onClick={toggleLang}
-            className="flex items-center space-x-2 px-3 py-2 bg-white text-gray-700 rounded-md hover:bg-gray-100 transition-colors border border-gray-200 shadow-sm"
+            className="flex items-center space-x-2 px-3 py-2 bg-slate-200 text-slate-800 rounded-md hover:bg-slate-300 transition-colors border border-slate-300 shadow-sm"
             aria-label={lang === 'en' ? 'Switch to Norwegian' : 'Switch to English'}
           >
             <Globe size={20} />
-            <span className="font-medium">{lang === 'en' ? 'EN' : 'NO'}</span>
+            <span className="font-medium font-mono">{lang === 'en' ? 'EN' : 'NO'}</span>
           </button>
         </header>
         
@@ -332,7 +332,7 @@ export default function PortfolioPage() {
           >
             <div className="space-y-6">
               <motion.h2 
-                className="text-5xl font-bold tracking-tight sm:text-6xl md:text-7xl text-gray-900"
+                className="text-5xl font-bold tracking-tight sm:text-6xl md:text-7xl text-slate-900 font-mono"
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
@@ -340,7 +340,7 @@ export default function PortfolioPage() {
                 Camilla Szlagor
               </motion.h2>
               <motion.h3 
-                className="text-3xl font-semibold text-teal-600"
+                className="text-3xl font-semibold text-slate-700 font-mono"
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
@@ -348,7 +348,7 @@ export default function PortfolioPage() {
                 {lang === 'en' ? 'Interaction Designer' : 'Interaksjonsdesigner'}
               </motion.h3>
               <motion.p 
-                className="max-w-[600px] text-gray-700 text-xl leading-relaxed"
+                className="max-w-[600px] text-slate-600 text-xl leading-relaxed"
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
@@ -364,7 +364,7 @@ export default function PortfolioPage() {
               >
                 <Link
                   href="#"
-                  className="inline-flex h-12 items-center justify-center rounded-md bg-teal-500 px-8 text-base font-medium text-white shadow transition-colors hover:bg-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+                  className="inline-flex h-12 items-center justify-center rounded-md bg-slate-800 px-8 text-base font-medium text-white shadow transition-colors hover:bg-slate-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-500 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 font-mono"
                 >
                   {lang === 'en' ? 'View Resume' : 'CV'}
                 </Link>
@@ -389,8 +389,8 @@ export default function PortfolioPage() {
             onClick={scrollToProjects}
             style={{ opacity }}
           >
-            <p className="text-gray-600 mb-2 text-3xl font-bold">{lang === 'en' ? 'Projects' : 'Prosjekter'}</p>
-            <ChevronDown size={40} className="mx-auto text-gray-600 animate-bounce" />
+            <p className="text-slate-800 mb-2 text-3xl font-bold font-mono">{lang === 'en' ? 'Projects' : 'Prosjekter'}</p>
+            <ChevronDown size={40} className="mx-auto text-slate-800 animate-bounce" />
           </motion.div>
         </motion.section>
 
@@ -402,7 +402,7 @@ export default function PortfolioPage() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1 }}
         >
-          <h2 className="text-4xl font-bold mb-12 text-center text-gray-900">
+          <h2 className="text-4xl font-bold mb-12 text-center text-slate-900 font-mono">
             {lang === 'en' ? 'My Projects' : 'Mine Prosjekter'}
           </h2>
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -428,10 +428,10 @@ export default function PortfolioPage() {
                     />
                   </div>
                   <div className="p-6">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                    <h3 className="text-2xl font-bold text-slate-900 mb-2 font-mono">
                       {project.title[lang]}
                     </h3>
-                    <p className="text-gray-600 text-lg">{project.description[lang]}</p>
+                    <p className="text-slate-600 text-lg">{project.description[lang]}</p>
                   </div>
                 </motion.div>
               </motion.div>
