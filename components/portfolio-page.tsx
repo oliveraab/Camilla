@@ -109,6 +109,7 @@ const projects: Project[] = [
   },
 ];
 
+
 function Modal({
   project,
   onClose,
@@ -187,14 +188,14 @@ function Modal({
     return (
       <>
         {visibleParagraphs.map((paragraph, index) => (
-          <p key={index} className="text-gray-600 mb-4 leading-relaxed text-lg">
+          <p key={index} className="text-slate-600 mb-4 leading-relaxed text-lg">
             {paragraph}
           </p>
         ))}
         {paragraphs.length > 1 && (
           <button
             onClick={() => setShowFullDescription(!showFullDescription)}
-            className="text-teal-600 hover:text-teal-700 font-medium mt-2"
+            className="text-slate-800 hover:text-slate-600 font-medium mt-2 font-mono"
           >
             {showFullDescription 
               ? (lang === 'en' ? 'Show less' : 'Vis mindre') 
@@ -210,7 +211,7 @@ function Modal({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 bg-black bg-opacity-75 backdrop-blur-sm flex items-center justify-center p-4 z-50"
+      className="fixed inset-0 bg-slate-900 bg-opacity-75 backdrop-blur-sm flex items-center justify-center p-4 z-50"
       onClick={onClose}
     >
       <motion.div 
@@ -222,12 +223,12 @@ function Modal({
       >
         <div className="p-8">
           <div className="flex justify-between items-start mb-6">
-            <h2 className="text-3xl font-bold text-gray-900">
+            <h2 className="text-3xl font-bold text-slate-900 font-mono">
               {project.title[lang]}
             </h2>
             <button
               onClick={onClose}
-              className="text-gray-500 hover:text-gray-700 transition-colors"
+              className="text-slate-500 hover:text-slate-700 transition-colors"
               aria-label="Close modal"
             >
               <svg
@@ -252,22 +253,22 @@ function Modal({
           </div>
           <div className="grid md:grid-cols-2 gap-6">
             <div>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-3">
+              <h3 className="text-2xl font-semibold text-slate-900 mb-3 font-mono">
                 {lang === 'en' ? 'Key Features' : 'Hovedfunksjoner'}
               </h3>
-              <ul className="list-disc list-inside text-gray-600 space-y-2">
+              <ul className="list-disc list-inside text-slate-600 space-y-2">
                 {project.features[lang].map((feature, index) => (
                   <li key={index} className="text-lg">{feature}</li>
                 ))}
               </ul>
             </div>
             <div>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-3">
+              <h3 className="text-2xl font-semibold text-slate-900 mb-3 font-mono">
                 {lang === 'en' ? 'Technologies Used' : 'Brukte Teknologier'}
               </h3>
               <div className="flex flex-wrap gap-2">
                 {project.technologies.map((tech, index) => (
-                  <span key={index} className="px-3 py-1 bg-teal-100 text-teal-800 rounded-full text-sm font-medium">
+                  <span key={index} className="px-3 py-1 bg-slate-100 text-slate-800 rounded-full text-sm font-medium font-mono">
                     {tech}
                   </span>
                 ))}
@@ -279,6 +280,9 @@ function Modal({
     </motion.div>
   );
 }
+
+
+
 export default function PortfolioPage() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [lang, setLang] = useState('en');
