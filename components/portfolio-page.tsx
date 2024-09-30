@@ -4,10 +4,9 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
-import { Globe, ChevronDown } from 'lucide-react';
+import {Check, Globe, ChevronDown, ChevronUp, X } from 'lucide-react';
 import { useInView } from 'react-intersection-observer';
 import PDFViewer from '@/components/pdf-viewer';
-import { X } from 'lucide-react';
 import ErrorBoundary from '@/components/ErrorBoundary';
 
 interface Project {
@@ -38,7 +37,7 @@ const projects: Project[] = [
       no: "Android Applikasjon som predikerer strømpris."
     },
     detailedDescription: {
-      en: "In the IN2000 (Software Engineering with Project Work) course at the University of Oslo, I worked for most of the semester in an interdisciplinary team developing an Android application called WattCast. The app helps users predict electricity prices based on historical data and weather conditions, allowing them to optimize their electricity consumption and save money.\n\nIn this project, I was primarily responsible for the design process, from the early stages of data collection and user testing to the final visual design in Figma. I also contributed to the implementation of the user interface in Android Studio using Kotlin. Throughout the process, I worked closely with the team to ensure that the design was not only aesthetically pleasing but also functional and user-friendly.\n\nOne of the biggest challenges was presenting electricity prices and weather forecasts in a way that was easy for users to understand. After several iterations of wireframing and prototyping, we settled on a design that presented both real-time and future electricity prices in a clear and concise manner. To make this possible, we used multiple linear regression to estimate electricity prices, which became a key feature of the app.\n\nThis project gave me valuable experience in user-oriented design and teamwork, as well as a deeper understanding of agile methods such as Scrumban for project management. Throughout the process, I learned how effective communication between design and development can ensure successful implementation of complex solutions.",
+      en: "During the course IN2000 (Software Engineering with Project Work) course at the University of Oslo, I worked for most of the semester in an interdisciplinary team developing an Android application called WattCast. The app helps users predict electricity prices based on historical data and weather conditions, allowing them to optimize their electricity consumption and save money.\n\nIn this project, I was primarily responsible for the design process, from the early stages of data collection and user testing to the final visual design in Figma. I also contributed to the implementation of the user interface in Android Studio using Kotlin. Throughout the process, I worked closely with the team to ensure that the design was not only aesthetically pleasing but also functional and user-friendly.\n\nOne of the biggest challenges was presenting electricity prices and weather forecasts in a way that was easy for users to understand. After several iterations of wireframing and prototyping, we settled on a design that presented both real-time and future electricity prices in a clear and concise manner. To make this possible, we used multiple linear regression to estimate electricity prices, which became a key feature of the app.\n\nThis project gave me valuable experience in user-oriented design and teamwork, as well as a deeper understanding of agile methods such as Scrumban for project management. Throughout the process, I learned how effective communication between design and development can ensure successful implementation of complex solutions.",
       no: "I emnet IN2000 (Software Engineering med prosjektarbeid) ved Universitetet i Oslo jobbet jeg store deler av semesteret i et tverrfaglig team som utviklet en Android-applikasjon kalt WattCast. Appen hjelper brukere med å predikere strømpriser basert på historisk data og værforhold, slik at de kan optimalisere sitt strømforbruk og spare penger.\n\nI prosjektet hadde jeg hovedansvaret for designprosessen, fra de tidlige fasene med datainnsamling og brukertesting til den endelige visuelle utformingen i Figma. Jeg bidro også til implementeringen av brukergrensesnittet i Android Studio ved hjelp av Kotlin. Gjennom hele prosessen jobbet jeg tett med teamet for å sikre at designet ikke bare var estetisk tiltalende, men også funksjonelt og brukervennlig.\n\nEn av de største utfordringene var å presentere strømpriser og værprognoser på en måte som var enkel for brukerne å forstå. Etter flere iterasjoner med wireframing og prototyping landet vi på et design som presenterte både sanntids- og fremtidige strømpriser på en klar og oversiktlig måte. For å gjøre dette mulig brukte vi multippel lineær regresjon for å estimere strømpriser, som ble en nøkkelfunksjon i appen.\n\nDette prosjektet ga meg verdifull erfaring med brukerorientert design og teamarbeid, samt en dypere forståelse av smidige metoder som Scrumban for prosjektstyring. Gjennom hele prosessen lærte jeg hvordan effektiv kommunikasjon mellom design og utvikling kan sikre en vellykket implementering av komplekse løsninger."
     },
     image: "/images/1.4.png",
@@ -97,9 +96,8 @@ const projects: Project[] = [
       no: "Sosial interaksjon & kognitiv trening for eldre."
     },
     detailedDescription: {
-      en: "During the IN1060 (Use-Oriented Design) course, I had a project where we developed a prototype called GelaQuiz, aimed at promoting social interaction and cognitive training for the elderly. Our target group was seniors aged 75-85 at a nursing home, and the project focused on reducing cognitive decline through engaging conversations and activities.\n\nAs the group leader, my responsibilities included coordinating the work in the team, ensuring progress, and keeping track of milestones. I established an internal work contract that helped improve group dynamics, and we set clear communication rules to ensure a smooth process. We started the project with a thorough investigation of the users through qualitative methods such as observations and semi-structured interviews to map out their needs and challenges.\n\nThrough an iterative design process, we developed several versions of the prototype based on feedback from the target group. We started with low-fidelity sketches, and the users were actively involved in all design decisions. The GelaQuiz prototype was designed to be easy to use, without time constraints, to encourage discussion and collaboration among players. It consisted of a main console and controllers with colored buttons, making it easy for users to participate in the quiz game.\n\nTechnically, the prototype was built using Arduino and Processing to implement the functionality. The game read out the questions and allowed users to answer with color-coded buttons, tailored to the elderly's need for simple and intuitive interactions.\n\nThrough user testing, the prototype proved to be an effective conversation starter, creating a high degree of social interaction. Although we faced some challenges with resources and time, especially in terms of the number of questions and the aesthetics of the product, the feedback from users was very positive. They appreciated the quiz questions and engaged in discussions around the answers.\n\nThis experience taught me the importance of user involvement, iterative design, and clear project management. The project met our goal of promoting both cognitive training and social interaction, and it was a great learning point to work so closely with users to ensure that our solutions actually addressed their needs.",
-      no: "I løpet av emnet IN1060 (Bruksorientert design) hadde jeg et prosjekt hvor vi utviklet en prototype kalt GelaQuiz, med formål om å fremme sosial interaksjon og kognitiv trening for eldre. Vår målgruppe var eldre i alderen 75-85 på et eldrehjem, og prosjektet fokuserte på å redusere kognitiv svekkelse gjennom engasjerende samtaler og aktiviteter.\n\nSom gruppeleder var mitt ansvar å koordinere arbeidet i teamet, sørge for fremdrift og holde oversikt over milepæler. Jeg opprettet en intern arbeidskontrakt som hjalp med å forbedre gruppedynamikken, og vi etablerte klare kommunikasjonsregler for å sikre en jevn prosess. Vi startet prosjektet med en grundig undersøkelse av brukerne gjennom kvalitative metoder som observasjoner og semi-strukturerte intervjuer for å kartlegge deres behov og utfordringer.\n\nGjennom en iterativ designprosess, utviklet vi flere versjoner av prototypen basert på tilbakemeldinger fra målgruppen. Vi begynte med lavoppløselige skisser, og brukerne var aktivt involvert i alle designavgjørelser. Prototypen GelaQuiz ble utformet for å være enkel å bruke, uten tidsbegrensning, for å oppmuntre til diskusjon og samarbeid mellom spillerne. Den besto av en hovedkonsoll og kontrollere med fargede knapper, som gjorde det enkelt for brukerne å delta i quiz-spillet.\n\nTeknisk sett ble prototypen bygget ved hjelp av Arduino og Processing for å implementere funksjonaliteten. Spillet leste opp spørsmålene og ga brukerne mulighet til å svare med fargekodede knapper, noe som var tilpasset de eldres behov for enkle og intuitive interaksjoner.\n\nGjennom sluttbrukertesting viste prototypen seg å være en effektiv samtalestarter, og den skapte høy grad av sosialt samspill. Selv om vi møtte noen utfordringer med ressurser og tid, spesielt når det gjaldt antall spørsmål og estetikken på produktet, var tilbakemeldingene fra brukerne svært positive. De satte pris på quiz-spørsmålene og engasjerte seg i diskusjoner rundt svarene.\n\nDenne erfaringen lærte meg viktigheten av brukermedvirkning, iterativ design og tydelig prosjektledelse. Prosjektet oppfylte vårt mål om å fremme både kognitiv trening og sosial interaksjon, og det var et stort læringspunkt å jobbe så tett med brukere for å sikre at våre løsninger faktisk svarte på deres behov."
-    },
+      en: "In IN1060 (Use-Oriented Design), I led a project where we developed GelaQuiz, a prototype to promote social interaction and cognitive training for the elderly in a nursing home. The target group was 75–85-year-olds, and our goal was to reduce cognitive decline through fun and engaging activities.\n\nAs a group leader, I ensured that the team worked well together, met deadlines, and established clear communication rules. We identified user needs through observations and interviews and developed the prototype iteratively with ongoing user participation.\n\nGelaQuiz, built with Arduino and Processing, made it easy for users to participate using color-coded buttons. End-user testing showed that the quiz game encouraged conversations and created engagement. The feedback was very positive, although we faced some challenges with time and resources.\n\nThis experience taught me how important it is to work closely with users and ensure that the solutions truly meet their needs, while also bringing a lot of joy to see the prototype in use.",
+      no: "I IN1060 (Bruksorientert design) ledet jeg et prosjekt der vi utviklet GelaQuiz, en prototype for å fremme sosial interaksjon og kognitiv trening for eldre på et eldrehjem. Målgruppen var 75–85-åringer, og målet vårt var å redusere kognitiv svekkelse gjennom morsomme og engasjerende aktiviteter.\n\nSom gruppeleder sørget jeg for at teamet jobbet godt sammen, fulgte tidsfrister, og opprettet klare kommunikasjonsregler. Vi kartla brukernes behov gjennom observasjoner og intervjuer og utviklet prototypen iterativt med løpende brukermedvirkning.\n\nGelaQuiz, bygget med Arduino og Processing, gjorde det enkelt for brukerne å delta ved hjelp av fargekodede knapper. Sluttbrukertestingen viste at quiz-spillet oppmuntret til samtaler og skapte engasjement. Tilbakemeldingene var svært positive, selv om vi møtte noen utfordringer med tid og ressurser.\n\nDenne erfaringen lærte meg hvor viktig det er å jobbe tett med brukerne og sikre at løsningene virkelig treffer deres behov, samtidig som det ga mye glede å se prototypen i bruk."},
     image: "/images/2.3.png",
     thumbnailImage: "/images/2.1.png", // New thumbnail image
     details: {
@@ -114,18 +112,9 @@ const projects: Project[] = [
   },
 ];
 
-
-
-function Modal({
-  project,
-  onClose,
-  lang
-}: {
-  project: Project;
-  onClose: () => void;
-  lang: 'en' | 'no';
-}) {
+export function Modal({ project, onClose, lang }: { project: Project; onClose: () => void; lang: 'en' | 'no' }) {
   const [showFullDescription, setShowFullDescription] = useState(false);
+  const [activeTab, setActiveTab] = useState<'features' | 'technologies'>('features');
   const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -188,61 +177,103 @@ function Modal({
     );
   };
 
-  const renderDescription = () => {
-    const paragraphs = project.detailedDescription[lang].split('\n\n');
-    const visibleParagraphs = showFullDescription ? paragraphs : [paragraphs[0]];
+
+const renderDescription = () => {
+    const paragraphs = project.detailedDescription[lang].split('\n\n')
+    const visibleParagraphs = showFullDescription ? paragraphs : [paragraphs[0]]
 
     return (
-      <>
+      <div className="space-y-4">
         {visibleParagraphs.map((paragraph, index) => (
-          <p key={index} className="text-foreground mb-4 leading-relaxed text-lg">
+          <motion.p 
+            key={index} 
+            className="text-[#4A5D4F] leading-relaxed text-lg"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+          >
             {paragraph}
-          </p>
+          </motion.p>
         ))}
-        {paragraphs.length > 1 && (
-          <button
+        {paragraphs.length > 1 && !showFullDescription && (
+          <motion.button
             onClick={() => {
-              setShowFullDescription(!showFullDescription);
-              if (!showFullDescription && contentRef.current) {
+              setShowFullDescription(true)
+              if (contentRef.current) {
                 setTimeout(() => {
-                  contentRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }, 100);
+                  contentRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                }, 100)
               }
             }}
-            className="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition-colors duration-200 font-mono text-sm font-medium"
+            className="flex items-center px-4 py-2 bg-[#E8E4DB] text-[#4A5D4F] rounded-md hover:bg-[#D9D4C9] transition-colors duration-200 font-mono text-sm font-medium"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: visibleParagraphs.length * 0.1 }}
           >
-            {showFullDescription 
-              ? (lang === 'en' ? 'Show less' : 'Vis mindre') 
-              : (lang === 'en' ? 'Read more' : 'Les mer')}
-          </button>
+            {lang === 'en' ? 'Read more' : 'Les mer'}
+            <ChevronDown className="ml-2" size={16} />
+          </motion.button>
         )}
-      </>
-    );
-  };
+      </div>
+    )
+  }
 
+
+const renderFeatures = () => (
+    <ul className="grid gap-4 sm:grid-cols-2">
+      {project.features[lang].map((feature, index) => (
+        <motion.li 
+          key={index} 
+          className="flex items-start space-x-2"
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: index * 0.1 }}
+        >
+          <Check className="text-[#7C9A82] mt-1 flex-shrink-0" size={20} />
+          <span className="text-[#4A5D4F] text-lg">{feature}</span>
+        </motion.li>
+      ))}
+    </ul>
+  )
+
+  const renderTechnologies = () => (
+    <div className="flex flex-wrap gap-2">
+      {project.technologies.map((tech, index) => (
+        <motion.span 
+          key={index} 
+          className="px-3 py-1 bg-[#E8E4DB] text-[#4A5D4F] rounded-full text-sm font-medium font-mono"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: index * 0.05 }}
+        >
+          {tech}
+        </motion.span>
+      ))}
+    </div>
+  )
   return (
     <motion.div 
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 bg-background/80 backdrop-blur-sm flex items-center justify-center p-4 z-50"
+      className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center p-4 z-50"
       onClick={onClose}
     >
       <motion.div 
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.9, opacity: 0 }}
-        className="bg-card text-card-foreground rounded-lg shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+        className="bg-[#F5F3EE] rounded-lg shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="p-8">
           <div className="flex justify-between items-start mb-6">
-            <h2 className="text-3xl font-bold text-foreground font-mono">
+            <h2 className="text-3xl font-bold text-[#4A5D4F] font-mono">
               {project.title[lang]}
             </h2>
             <button
               onClick={onClose}
-              className="text-muted-foreground hover:text-foreground transition-colors"
+              className="text-[#4A5D4F] hover:text-[#2C3A2F] transition-colors"
               aria-label="Close modal"
             >
               <X size={24} />
@@ -252,241 +283,234 @@ function Modal({
           <div className="mb-6" ref={contentRef}>
             {renderDescription()}
           </div>
-          <div className="grid md:grid-cols-2 gap-6">
-            <div>
-              <h3 className="text-2xl font-semibold text-foreground mb-3 font-mono">
-                {lang === 'en' ? 'Key Features' : 'Hovedfunksjoner'}
-              </h3>
-              <ul className="list-disc pl-5 text-muted-foreground space-y-2">
-                {project.features[lang].map((feature, index) => (
-                  <li key={index} className="text-lg">
-                    <span className="text-foreground">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-2xl font-semibold text-foreground mb-3 font-mono">
+          <div className="mb-4">
+            <div className="flex space-x-2">
+              <button
+                onClick={() => setActiveTab('features')}
+                className={`px-4 py-2 rounded-md font-mono text-sm font-medium transition-colors duration-200 ${
+                  activeTab === 'features' ? 'bg-[#7C9A82] text-white' : 'bg-[#E8E4DB] text-[#4A5D4F]'
+                }`}
+              >
+                {lang === 'en' ? 'Key Features' : 'Stikkord'}
+              </button>
+              <button
+                onClick={() => setActiveTab('technologies')}
+                className={`px-4 py-2 rounded-md font-mono text-sm font-medium transition-colors duration-200 ${
+                  activeTab === 'technologies' ? 'bg-[#7C9A82] text-white' : 'bg-[#E8E4DB] text-[#4A5D4F]'
+                }`}
+              >
                 {lang === 'en' ? 'Technologies' : 'Teknologier'}
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {project.technologies.map((tech, index) => (
-                  <span key={index} className="px-3 py-1 bg-secondary text-secondary-foreground rounded-full text-sm font-medium font-mono">
-                    {tech}
-                  </span>
-                ))}
-              </div>
+              </button>
             </div>
           </div>
+          <motion.div 
+            key={activeTab}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className="bg-[#E8E4DB] p-6 rounded-lg"
+          >
+            {activeTab === 'features' ? renderFeatures() : renderTechnologies()}
+          </motion.div>
         </div>
       </motion.div>
     </motion.div>
-  );
+  )
 }
-export default function PortfolioPage() {
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [lang, setLang] = useState<'en' | 'no'>('en');
-  const [showPDF, setShowPDF] = useState(false);
-  const [pdfError, setPdfError] = useState<string | null>(null);
 
-  useEffect(() => {
-    console.log("PortfolioPage mounted");
-  }, []);
+export default function PortfolioPage() {
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null)
+  const [lang, setLang] = useState<'en' | 'no'>('en')
+  const [showPDF, setShowPDF] = useState(false)
+  const [pdfError, setPdfError] = useState<string | null>(null)
 
   const toggleLang = () => {
-    setLang(lang === 'en' ? 'no' : 'en');
-  };
+    setLang(lang === 'en' ? 'no' : 'en')
+  }
 
-  const { scrollY } = useScroll();
-  const y1 = useTransform(scrollY, [0, 300], [0, 50]);
-  const y2 = useTransform(scrollY, [0, 300], [0, -50]);
-  const scale = useTransform(scrollY, [0, 300], [1, 1.1]);
-  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+  const { scrollY } = useScroll()
+  const y1 = useTransform(scrollY, [0, 300], [0, 50])
+  const y2 = useTransform(scrollY, [0, 300], [0, -50])
+  const opacity = useTransform(scrollY, [0, 300], [1, 0])
 
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
-  });
+  })
 
   const scrollToProjects = () => {
-    const projectsSection = document.getElementById('projects-section');
+    const projectsSection = document.getElementById('projects-section')
     if (projectsSection) {
-      projectsSection.scrollIntoView({ behavior: 'smooth' });
+      projectsSection.scrollIntoView({ behavior: 'smooth' })
     }
-  };
+  }
 
   const handlePDFError = (error: Error) => {
-    console.error("PDF error:", error);
-    setPdfError("Failed to load PDF. Please try again later.");
-  };
-
-  console.log("Rendering PortfolioPage");
+    console.error("PDF error:", error)
+    setPdfError("Failed to load PDF. Please try again later.")
+  }
 
   return (
-    <ErrorBoundary>
-      <div className="bg-slate-50 min-h-screen font-sans overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <header className="py-6 flex justify-between items-center sticky top-0 z-10 bg-slate-50 bg-opacity-80 backdrop-blur-sm">
-            <h1 className="text-2xl font-bold text-slate-800 font-mono">
-              {lang === 'en' ? 'Portfolio' : 'Portefølje'}
-            </h1>
-            <button
-              onClick={toggleLang}
-              className="flex items-center space-x-2 px-3 py-2 bg-slate-200 text-slate-800 rounded-md hover:bg-slate-300 transition-colors border border-slate-300 shadow-sm"
-              aria-label={lang === 'en' ? 'Bytt til norsk' : 'Switch to English'}
-            >
-              <Globe size={20} />
-              <span className="font-medium font-mono">{lang === 'en' ? 'EN' : 'NO'}</span>
-            </button>
-          </header>
-          
-          <motion.section 
-            className="min-h-[calc(100vh-80px)] flex flex-col justify-between pt-16 pb-8 relative"
-            style={{ scale }}
+    <div className="bg-[#F5F3EE] min-h-screen font-sans">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <header className="py-6 flex justify-between items-center sticky top-0 z-10 bg-[#F5F3EE] bg-opacity-90 backdrop-blur-sm">
+          <h1 className="text-2xl font-bold text-[#4A5D4F] font-mono">
+            {lang === 'en' ? 'Portfolio' : 'Portefølje'}
+          </h1>
+          <button
+            onClick={toggleLang}
+            className="flex items-center space-x-2 px-3 py-2 bg-[#E8E4DB] text-[#4A5D4F] rounded-md hover:bg-[#D9D4C9] transition-colors border border-[#C5BFB3] shadow-sm"
+            aria-label={lang === 'en' ? 'Bytt til norsk' : 'Switch to English'}
           >
-            <motion.div 
-              className="grid items-start gap-12 lg:grid-cols-2"
-              style={{ y: y1 }}
-            >
-              <div className="space-y-6">
-                <motion.h2 
-                  className="text-5xl font-bold tracking-tight sm:text-6xl md:text-7xl text-slate-900 font-mono"
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
-                >
-                  Camilla Szlagor
-                </motion.h2>
-                <motion.h3 
-                  className="text-3xl font-semibold text-slate-700 font-mono"
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.4 }}
-                >
-                  {lang === 'en' ? 'Interaction Designer' : 'Interaksjonsdesigner'}
-                </motion.h3>
-                <motion.p 
-                  className="max-w-[600px] text-slate-600 text-xl leading-relaxed"
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.6 }}
-                >
-                  {lang === 'en' 
-                    ? "Experienced full-stack developer with expertise in React, Node.js, and database technologies. Passionate about building scalable and user-friendly web applications."
-                    : "Erfaren full-stack utvikler med ekspertise innen React, Node.js og databaseteknologier. Lidenskapelig opptatt av å bygge skalerbare og brukervennlige webapplikasjoner."}
-                </motion.p>
-                <motion.div
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.8 }}
-                >
-                  <button
-                    onClick={() => setShowPDF(true)}
-                    className="inline-flex h-12 items-center justify-center rounded-md bg-slate-800 px-8 text-base font-medium text-white shadow transition-colors hover:bg-slate-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-500 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 font-mono"
-                  >
-                    {lang === 'en' ? 'View Resume' : 'Se CV'}
-                  </button>
-                </motion.div>
-              </div>
-              <motion.div 
-                className="flex justify-center lg:justify-end"
-                style={{ y: y2 }}
+            <Globe size={20} />
+            <span className="font-medium font-mono">{lang === 'en' ? 'EN' : 'NO'}</span>
+          </button>
+        </header>
+        
+        <motion.section 
+          className="min-h-[calc(100vh-80px)] flex flex-col justify-between pt-16 pb-8 relative"
+        >
+          <motion.div 
+            className="grid items-start gap-12 lg:grid-cols-2"
+            style={{ y: y1 }}
+          >
+            <div className="space-y-6">
+              <motion.h2 
+                className="text-5xl font-bold tracking-tight sm:text-6xl md:text-7xl text-[#4A5D4F] font-mono"
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
               >
-                <div className="relative w-full max-w-[400px] aspect-square">
-                  <Image
-                    src="/images/camilla.jpg"
-                    fill
-                    alt="Camilla Szlagor"
-                    className="rounded-2xl object-cover shadow-lg"
-                  />
-                </div>
-              </motion.div>
-            </motion.div>
-            <motion.div 
-              className="text-center cursor-pointer mt-12"
-              onClick={scrollToProjects}
-              style={{ opacity }}
-            >
-              <p className="text-slate-800 mb-2 text-3xl font-bold font-mono">{lang === 'en' ? 'Projects' : 'Prosjekter'}</p>
-              <ChevronDown size={40} className="mx-auto text-slate-800 animate-bounce" />
-            </motion.div>
-          </motion.section>
-
-          <motion.section 
-            id="projects-section"
-            ref={ref}
-            className="py-16 md:py-24 lg:py-32"
-            initial={{ opacity: 0, y: 100 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 1 }}
-          >
-            <h2 className="text-4xl font-bold mb-12 text-center text-slate-900 font-mono">
-              {lang === 'en' ? 'My Projects' : 'Mine Prosjekter'}
-            </h2>
-            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-              {projects.map((project, index) => (
-                <motion.div
-                  key={project.id}
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={inView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                Camilla Szlagor
+              </motion.h2>
+              <motion.h3 
+                className="text-3xl font-semibold text-[#6B7F70] font-mono"
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              >
+                {lang === 'en' ? 'Interaction Designer' : 'Interaksjonsdesigner'}
+              </motion.h3>
+              <motion.p 
+                className="max-w-[600px] text-[#4A5D4F] text-xl leading-relaxed"
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+              >
+                {lang === 'en' 
+                  ? "First-year master's student in Informatics: Design, Use, Interaction at the University of Oslo."
+                  : "Første årsstudent på master i informatikk: design, bruk, interaksjon ved Universitetet i Oslo."}
+              </motion.p>
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+              >
+                <button
+                  onClick={() => setShowPDF(true)}
+                  className="inline-flex h-12 items-center justify-center rounded-md bg-[#7C9A82] px-8 text-base font-medium text-white shadow transition-colors hover:bg-[#6B8A71] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4A5D4F] focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 font-mono"
                 >
-                  <motion.div
-                    whileHover={{ y: -8 }}
-                    className="group relative overflow-hidden rounded-xl bg-white shadow-lg transition-all duration-300 hover:shadow-xl cursor-pointer"
-                    onClick={() => setSelectedProject(project)}
-                  >
-                    <div className="aspect-video overflow-hidden">
-                      <Image
-                        src={project.thumbnailImage || project.image}
-                        width={600}
-                        height={400}
-                        alt={project.title[lang]}
-                        className="h-full w-full object-cover transition-all duration-300 group-hover:scale-105"
-                      />
-                    </div>
-                    <div className="p-6">
-                      <h3 className="text-2xl font-bold text-slate-900 mb-2 font-mono">
-                        {project.title[lang]}
-                      </h3>
-                      <p className="text-slate-600 text-lg">{project.description[lang]}</p>
-                    </div>
-                  </motion.div>
-                </motion.div>
-              ))}
+                  {lang === 'en' ? 'View Resume' : 'Se CV'}
+                </button>
+              </motion.div>
             </div>
-          </motion.section>
-        </div>
-        <AnimatePresence>
-          {selectedProject && (
-            <Modal
-              project={selectedProject}
-              onClose={() => setSelectedProject(null)}
-              lang={lang}
-            />
-          )}
-        </AnimatePresence>
-        {showPDF && (
-          <PDFViewer 
-            file="/cv_camilla_szlagor.pdf" 
-            onClose={() => setShowPDF(false)}
-            onError={handlePDFError}
+            <motion.div 
+              className="flex justify-center lg:justify-end"
+              style={{ y: y2 }}
+            >
+              <div className="relative w-full max-w-[400px] aspect-square">
+                <Image
+                  src="/images/camilla.jpg"
+                  fill
+                  alt="Camilla Szlagor"
+                  className="rounded-2xl object-cover shadow-lg"
+                />
+              </div>
+            </motion.div>
+          </motion.div>
+          <motion.div 
+            className="text-center cursor-pointer mt-12"
+            onClick={scrollToProjects}
+            style={{ opacity }}
+          >
+            <p className="text-[#4A5D4F] mb-2 text-3xl font-bold font-mono">{lang === 'en' ? 'Projects' : 'Prosjekter'}</p>
+            <ChevronDown size={40} className="mx-auto text-[#4A5D4F] animate-bounce" />
+          </motion.div>
+        </motion.section>
+
+        <motion.section 
+          id="projects-section"
+          ref={ref}
+          className="py-16 md:py-24 lg:py-32"
+          initial={{ opacity: 0, y: 100 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 1 }}
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 justify-items-center">
+            {projects.map((project, index) => (
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, y: 50 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="w-full max-w-xl"
+              >
+                <motion.div
+                  whileHover={{ y: -8 }}
+                  className="group relative overflow-hidden rounded-xl bg-white shadow-lg transition-all duration-300 hover:shadow-xl cursor-pointer h-full"
+                  onClick={() => setSelectedProject(project)}
+                >
+                  <div className="aspect-[4/3] overflow-hidden">
+                    <Image
+                      src={project.thumbnailImage || project.image}
+                      width={1200}
+                      height={900}
+                      alt={project.title[lang]}
+                      className="h-full w-full object-cover transition-all duration-300 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-8">
+                    <h3 className="text-3xl font-bold text-[#4A5D4F] mb-4 font-mono">
+                      {project.title[lang]}
+                    </h3>
+                    <p className="text-[#6B7F70] text-xl">{project.description[lang]}</p>
+                  </div>
+                </motion.div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.section>
+      </div>
+      <AnimatePresence>
+        {selectedProject && (
+          <Modal
+            project={selectedProject}
+            onClose={() => setSelectedProject(null)}
+            lang={lang}
           />
         )}
-        {pdfError && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-            <div className="bg-white p-4 rounded-lg max-w-md">
-              <p className="text-red-500">{pdfError}</p>
-              <button 
-                onClick={() => setPdfError(null)}
-                className="mt-4 px-4 py-2 bg-slate-800 text-white rounded-md"
-              >
-                Close
-              </button>
-            </div>
+      </AnimatePresence>
+      {showPDF && (
+        <PDFViewer 
+          file="/cv_camilla_szlagor.pdf" 
+          onClose={() => setShowPDF(false)}
+          onError={handlePDFError}
+        />
+      )}
+      {pdfError && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-[#F5F3EE] p-4 rounded-lg max-w-md">
+            <p className="text-[#D35E5E]">{pdfError}</p>
+            <button 
+              onClick={() => setPdfError(null)}
+              className="mt-4 px-4 py-2 bg-[#7C9A82] text-white rounded-md hover:bg-[#6B8A71] transition-colors"
+            >
+              Close
+            </button>
           </div>
-        )}
-      </div>
-    </ErrorBoundary>
-  );
+        </div>
+      )}
+    </div>
+  )
 }
