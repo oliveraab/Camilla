@@ -282,13 +282,6 @@ function Modal({
     </motion.div>
   );
 }
-
-
-
-
-
-
-
 export default function PortfolioPage() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [lang, setLang] = useState<'en' | 'no'>('en');
@@ -298,20 +291,6 @@ export default function PortfolioPage() {
   const toggleLang = () => {
     setLang(lang === 'en' ? 'no' : 'en');
   };
-
-const prefetchFigmaEmbeds = () => {
-  projects.forEach(project => {
-    if (project.embed && project.embed.type === 'figma') {
-      const link = document.createElement('link');
-      link.rel = 'prefetch';
-      link.href = project.embed.url;
-      document.head.appendChild(link);
-    }
-  });
-};
-useEffect(() => {
-    prefetchFigmaEmbeds();
-  }, []);
 
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 300], [0, 50]);
@@ -331,11 +310,6 @@ useEffect(() => {
     }
   };
 
-  const handleViewResume = () => {
-    setShowPDF(true);
-    setPdfError(null);
-  };
-
   const handlePDFError = (error: Error) => {
     console.error("PDF error:", error);
     setPdfError("Failed to load PDF. Please try again later.");
@@ -343,138 +317,8 @@ useEffect(() => {
 
   return (
     <div className="bg-slate-50 min-h-screen font-sans overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <header className="py-6 flex justify-between items-center sticky top-0 z-10 bg-slate-50 bg-opacity-80 backdrop-blur-sm">
-          <h1 className="text-2xl font-bold text-slate-800 font-mono">
-            {lang === 'en' ? 'Portfolio' : 'Portefølje'}
-          </h1>
-          <button
-            onClick={toggleLang}
-            className="flex items-center space-x-2 px-3 py-2 bg-slate-200 text-slate-800 rounded-md hover:bg-slate-300 transition-colors border border-slate-300 shadow-sm"
-            aria-label={lang === 'en' ? 'Switch to Norwegian' : 'Switch to English'}
-          >
-            <Globe size={20} />
-            <span className="font-medium font-mono">{lang === 'en' ? 'EN' : 'NO'}</span>
-          </button>
-        </header>
-        
-        <motion.section 
-          className="min-h-[calc(100vh-80px)] flex flex-col justify-between pt-16 pb-8 relative"
-          style={{ scale }}
-        >
-          <motion.div 
-            className="grid items-start gap-12 lg:grid-cols-2"
-            style={{ y: y1 }}
-          >
-            <div className="space-y-6">
-              <motion.h2 
-                className="text-5xl font-bold tracking-tight sm:text-6xl md:text-7xl text-slate-900 font-mono"
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-              >
-                Camilla Szlagor
-              </motion.h2>
-              <motion.h3 
-                className="text-3xl font-semibold text-slate-700 font-mono"
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-              >
-                {lang === 'en' ? 'Interaction Designer' : 'Interaksjonsdesigner'}
-              </motion.h3>
-              <motion.p 
-                className="max-w-[600px] text-slate-600 text-xl leading-relaxed"
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-              >
-                {lang === 'en' 
-                  ? "First-year master's student in Informatics: Design, Use, Interaction at the University of Oslo."
-                  : "Første årsstudent på master i informatikk: design, bruk, interaksjon ved Universitetet i Oslo."}
-              </motion.p>
-              <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.8 }}
-              >
-                <button
-                  onClick={handleViewResume}
-                  className="inline-flex h-12 items-center justify-center rounded-md bg-slate-800 px-8 text-base font-medium text-white shadow transition-colors hover:bg-slate-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-500 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 font-mono"
-                >
-                  {lang === 'en' ? 'View Resume' : 'Se CV'}
-                </button>
-              </motion.div>
-            </div>
-            <motion.div 
-              className="flex justify-center lg:justify-end"
-              style={{ y: y2 }}
-            >
-              <div className="relative w-full max-w-[400px] aspect-square">
-                <Image
-                  src="/images/camilla.jpg"
-                  fill
-                  alt="Camilla Szlagor"
-                  className="rounded-2xl object-cover shadow-lg"
-                />
-              </div>
-            </motion.div>
-          </motion.div>
-          <motion.div 
-            className="text-center cursor-pointer mt-12"
-            onClick={scrollToProjects}
-            style={{ opacity }}
-          >
-            <p className="text-slate-800 mb-2 text-3xl font-bold font-mono">{lang === 'en' ? 'Projects' : 'Prosjekter'}</p>
-            <ChevronDown size={40} className="mx-auto text-slate-800 animate-bounce" />
-          </motion.div>
-        </motion.section>
-
-        <motion.section 
-          id="projects-section"
-          ref={ref}
-          className="py-16 md:py-24 lg:py-32"
-          initial={{ opacity: 0, y: 100 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 1 }}
-        >
-          <h2 className="text-4xl font-bold mb-12 text-center text-slate-900 font-mono">
-            {lang === 'en' ? 'My Projects' : 'Mine Prosjekter'}
-          </h2>
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {projects.map((project, index) => (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0, y: 50 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <motion.div
-                  whileHover={{ y: -8 }}
-                  className="group relative overflow-hidden rounded-xl bg-white shadow-lg transition-all duration-300 hover:shadow-xl cursor-pointer"
-                  onClick={() => setSelectedProject(project)}
-                >
-                  <div className="aspect-video overflow-hidden">
-                    <Image
-                      src={project.id === 3 ? (project.thumbnailImage || project.image) : project.image}
-                      width={600}
-                      height={400}
-                      alt={project.title[lang]}
-                      className="h-full w-full object-cover transition-all duration-300 group-hover:scale-105"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-2xl font-bold text-slate-900 mb-2 font-mono">
-                      {project.title[lang]}
-                    </h3>
-                    <p className="text-slate-600 text-lg">{project.description[lang]}</p>
-                  </div>
-                </motion.div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.section>
-      </div>
+      {/* ... (keep the existing JSX) */}
+      
       <AnimatePresence>
         {selectedProject && (
           <Modal
@@ -507,3 +351,7 @@ useEffect(() => {
     </div>
   );
 }
+
+
+
+

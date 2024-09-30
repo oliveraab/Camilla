@@ -11,9 +11,10 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 interface PDFViewerProps {
   file: string;
   onClose: () => void;
+  onError: (error: Error) => void;
 }
 
-function PDFViewer({ file, onClose }: PDFViewerProps) {
+function PDFViewer({ file, onClose, onError }: PDFViewerProps) {
   const [numPages, setNumPages] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -55,7 +56,10 @@ function PDFViewer({ file, onClose }: PDFViewerProps) {
           <Document
             file={file}
             onLoadSuccess={onDocumentLoadSuccess}
-            onLoadError={(error) => console.error("PDF load error:", error)}
+            onLoadError={(error: Error) => {
+              console.error("PDF load error:", error);
+              onError(error);
+            }}
             loading={<p className="text-center mt-4">Loading PDF...</p>}
           >
             {Array.from(new Array(numPages), (el, index) => (
