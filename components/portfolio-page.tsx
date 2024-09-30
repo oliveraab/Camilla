@@ -16,6 +16,7 @@ interface Project {
   detailedDescription: { en: string; no: string };
   image: string;
   details: { en: string; no: string };
+  thumbnailImage?: string; 
   features: { en: string[]; no: string[] };
   technologies: string[];
   embed?: {
@@ -101,8 +102,8 @@ const projects: Project[] = [
     image: "/images/2.3.png",
     thumbnailImage: "/images/2.1.png", // New thumbnail image
     details: {
-      en: "This project is a comprehensive web application that demonstrates proficiency in both front-end and back-end technologies.",
-      no: "Dette prosjektet er en omfattende webapplikasjon som demonstrerer kompetanse i både front-end og back-end teknologier."
+      en:"",
+      no: ""
     },
     features: {
       en: ["Prototyping", "Observation","Interview", "Workshop", "Mind Map", "User Testing", "Thematic Analysis" ],
