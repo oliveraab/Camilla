@@ -1,11 +1,13 @@
 'use client'
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { Globe, ChevronDown } from 'lucide-react';
 import { useInView } from 'react-intersection-observer';
+import PDFViewer from '@/components/pdf-viewer';
+import { X } from 'lucide-react';
 
 interface Project {
   id: number;
@@ -63,7 +65,7 @@ const projects: Project[] = [
       no: "Interaktiv dialog med AI-genererte politikere."
     },
     detailedDescription: {
-      en: "In the IN3010 (Transformative Design) course, my group worked on a project where we were tasked with developing a technology that promoted political engagement. We were then to explore how this technology could lead to either a utopia or a dystopia. We developed the concept of DeepDialogue, a physical installation where the population could engage in conversations with AI-generated politicians.\n\nDeepDialogue was designed as a response to the challenge of declining voter turnout. The technology allowed users to ask questions to AI politicians and engage in realistic political discussions in real-time.\n\nThroughout the project, we used several design methods to ensure that the solution was both relevant and feasible.\n\nAs a result, my group created a video to show what such a technology could look like and how it could contribute to a future dystopia. My main responsibility in this video prototype was to create the news broadcasts.",
+      en: "In the IN3010 (Transformative Design) course, my group worked on a project where we were tasked with developing a technology that promoted political engagement. We were then to explore how this technology could lead to either a utopia or a dystopia. We developed the concept of DeepDialogue, a physical installation where the population could engage in conversations with AI-generated politicians.\n\nDeepDialogue was designed as a response to the challenge of declining voter turnout. The technology allowed users to ask questions to AI politicians and engage in realistic political discussions in real-time.Throughout the project, we used several design methods to ensure that the solution was both relevant and feasible.\n\nAs a result, my group created a video to show what such a technology could look like and how it could contribute to a future dystopia. My main responsibility in this video prototype was to create the news broadcasts.",
       no: "I IN3010 (Transformativt design) jobbet gruppen min med et prosjekt der vi skulle utvikle en teknologi som fremmet politisk engasjement. Deretter skulle vi utforske hvordan denne teknologien kunne lede til enten en utopi eller en dystopi. Vi utviklet konseptet DypDialog, en fysisk installasjon der befolkningen kunne delta i samtaler med AI-genererte politikere.\n\nDypDialog ble utformet som et svar på utfordringen med synkende valgdeltakelse. Teknologien gjorde det mulig for brukerne å stille spørsmål til AI-politikere og engasjere seg i realistiske politiske diskusjoner i sanntid. \n\nI løpet av prosjektet brukte vi flere designmetoder for å sikre at løsningen var både relevant og gjennomførbar.\n\nMin gruppe lagde av den grunn en video for å vise hvordan en slik teknologi kunne se ut og hvordan den kunne bidra til en fremtidig dystopi. Mitt hovedansvar i denne videoprototypen var å lage nyhetssendingene."
     },
     image: "/images/3.7.png",
@@ -96,7 +98,8 @@ const projects: Project[] = [
       en: "During the IN1060 (Use-Oriented Design) course, I had a project where we developed a prototype called GelaQuiz, aimed at promoting social interaction and cognitive training for the elderly. Our target group was seniors aged 75-85 at a nursing home, and the project focused on reducing cognitive decline through engaging conversations and activities.\n\nAs the group leader, my responsibilities included coordinating the work in the team, ensuring progress, and keeping track of milestones. I established an internal work contract that helped improve group dynamics, and we set clear communication rules to ensure a smooth process. We started the project with a thorough investigation of the users through qualitative methods such as observations and semi-structured interviews to map out their needs and challenges.\n\nThrough an iterative design process, we developed several versions of the prototype based on feedback from the target group. We started with low-fidelity sketches, and the users were actively involved in all design decisions. The GelaQuiz prototype was designed to be easy to use, without time constraints, to encourage discussion and collaboration among players. It consisted of a main console and controllers with colored buttons, making it easy for users to participate in the quiz game.\n\nTechnically, the prototype was built using Arduino and Processing to implement the functionality. The game read out the questions and allowed users to answer with color-coded buttons, tailored to the elderly's need for simple and intuitive interactions.\n\nThrough user testing, the prototype proved to be an effective conversation starter, creating a high degree of social interaction. Although we faced some challenges with resources and time, especially in terms of the number of questions and the aesthetics of the product, the feedback from users was very positive. They appreciated the quiz questions and engaged in discussions around the answers.\n\nThis experience taught me the importance of user involvement, iterative design, and clear project management. The project met our goal of promoting both cognitive training and social interaction, and it was a great learning point to work so closely with users to ensure that our solutions actually addressed their needs.",
       no: "I løpet av emnet IN1060 (Bruksorientert design) hadde jeg et prosjekt hvor vi utviklet en prototype kalt GelaQuiz, med formål om å fremme sosial interaksjon og kognitiv trening for eldre. Vår målgruppe var eldre i alderen 75-85 på et eldrehjem, og prosjektet fokuserte på å redusere kognitiv svekkelse gjennom engasjerende samtaler og aktiviteter.\n\nSom gruppeleder var mitt ansvar å koordinere arbeidet i teamet, sørge for fremdrift og holde oversikt over milepæler. Jeg opprettet en intern arbeidskontrakt som hjalp med å forbedre gruppedynamikken, og vi etablerte klare kommunikasjonsregler for å sikre en jevn prosess. Vi startet prosjektet med en grundig undersøkelse av brukerne gjennom kvalitative metoder som observasjoner og semi-strukturerte intervjuer for å kartlegge deres behov og utfordringer.\n\nGjennom en iterativ designprosess, utviklet vi flere versjoner av prototypen basert på tilbakemeldinger fra målgruppen. Vi begynte med lavoppløselige skisser, og brukerne var aktivt involvert i alle designavgjørelser. Prototypen GelaQuiz ble utformet for å være enkel å bruke, uten tidsbegrensning, for å oppmuntre til diskusjon og samarbeid mellom spillerne. Den besto av en hovedkonsoll og kontrollere med fargede knapper, som gjorde det enkelt for brukerne å delta i quiz-spillet.\n\nTeknisk sett ble prototypen bygget ved hjelp av Arduino og Processing for å implementere funksjonaliteten. Spillet leste opp spørsmålene og ga brukerne mulighet til å svare med fargekodede knapper, noe som var tilpasset de eldres behov for enkle og intuitive interaksjoner.\n\nGjennom sluttbrukertesting viste prototypen seg å være en effektiv samtalestarter, og den skapte høy grad av sosialt samspill. Selv om vi møtte noen utfordringer med ressurser og tid, spesielt når det gjaldt antall spørsmål og estetikken på produktet, var tilbakemeldingene fra brukerne svært positive. De satte pris på quiz-spørsmålene og engasjerte seg i diskusjoner rundt svarene.\n\nDenne erfaringen lærte meg viktigheten av brukermedvirkning, iterativ design og tydelig prosjektledelse. Prosjektet oppfylte vårt mål om å fremme både kognitiv trening og sosial interaksjon, og det var et stort læringspunkt å jobbe så tett med brukere for å sikre at våre løsninger faktisk svarte på deres behov."
     },
-    image: "/images/2.1.png?height=400&width=600",
+    image: "/images/2.3.png",
+    thumbnailImage: "/images/2.1.png", // New thumbnail image
     details: {
       en: "This project is a comprehensive web application that demonstrates proficiency in both front-end and back-end technologies.",
       no: "Dette prosjektet er en omfattende webapplikasjon som demonstrerer kompetanse i både front-end og back-end teknologier."
@@ -110,6 +113,7 @@ const projects: Project[] = [
 ];
 
 
+
 function Modal({
   project,
   onClose,
@@ -120,6 +124,7 @@ function Modal({
   lang: 'en' | 'no';
 }) {
   const [showFullDescription, setShowFullDescription] = useState(false);
+  const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
@@ -188,14 +193,21 @@ function Modal({
     return (
       <>
         {visibleParagraphs.map((paragraph, index) => (
-          <p key={index} className="text-slate-600 mb-4 leading-relaxed text-lg">
+          <p key={index} className="text-foreground mb-4 leading-relaxed text-lg">
             {paragraph}
           </p>
         ))}
         {paragraphs.length > 1 && (
           <button
-            onClick={() => setShowFullDescription(!showFullDescription)}
-            className="text-slate-800 hover:text-slate-600 font-medium mt-2 font-mono"
+            onClick={() => {
+              setShowFullDescription(!showFullDescription);
+              if (!showFullDescription && contentRef.current) {
+                setTimeout(() => {
+                  contentRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 100);
+              }
+            }}
+            className="px-4 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition-colors duration-200 font-mono text-sm font-medium"
           >
             {showFullDescription 
               ? (lang === 'en' ? 'Show less' : 'Vis mindre') 
@@ -211,64 +223,53 @@ function Modal({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 bg-slate-900 bg-opacity-75 backdrop-blur-sm flex items-center justify-center p-4 z-50"
+      className="fixed inset-0 bg-background/80 backdrop-blur-sm flex items-center justify-center p-4 z-50"
       onClick={onClose}
     >
       <motion.div 
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.9, opacity: 0 }}
-        className="bg-white rounded-lg shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+        className="bg-card text-card-foreground rounded-lg shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="p-8">
           <div className="flex justify-between items-start mb-6">
-            <h2 className="text-3xl font-bold text-slate-900 font-mono">
+            <h2 className="text-3xl font-bold text-foreground font-mono">
               {project.title[lang]}
             </h2>
             <button
               onClick={onClose}
-              className="text-slate-500 hover:text-slate-700 transition-colors"
+              className="text-muted-foreground hover:text-foreground transition-colors"
               aria-label="Close modal"
             >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
+              <X size={24} />
             </button>
           </div>
           {renderEmbed()}
-          <div className="mb-6">
+          <div className="mb-6" ref={contentRef}>
             {renderDescription()}
           </div>
           <div className="grid md:grid-cols-2 gap-6">
             <div>
-              <h3 className="text-2xl font-semibold text-slate-900 mb-3 font-mono">
+              <h3 className="text-2xl font-semibold text-foreground mb-3 font-mono">
                 {lang === 'en' ? 'Key Features' : 'Hovedfunksjoner'}
               </h3>
-              <ul className="list-disc list-inside text-slate-600 space-y-2">
+              <ul className="list-disc pl-5 text-muted-foreground space-y-2">
                 {project.features[lang].map((feature, index) => (
-                  <li key={index} className="text-lg">{feature}</li>
+                  <li key={index} className="text-lg">
+                    <span className="text-foreground">{feature}</span>
+                  </li>
                 ))}
               </ul>
             </div>
             <div>
-              <h3 className="text-2xl font-semibold text-slate-900 mb-3 font-mono">
-                {lang === 'en' ? 'Technologies Used' : 'Brukte Teknologier'}
+              <h3 className="text-2xl font-semibold text-foreground mb-3 font-mono">
+                {lang === 'en' ? 'Technologies' : 'Teknologier'}
               </h3>
               <div className="flex flex-wrap gap-2">
                 {project.technologies.map((tech, index) => (
-                  <span key={index} className="px-3 py-1 bg-slate-100 text-slate-800 rounded-full text-sm font-medium font-mono">
+                  <span key={index} className="px-3 py-1 bg-secondary text-secondary-foreground rounded-full text-sm font-medium font-mono">
                     {tech}
                   </span>
                 ))}
@@ -281,13 +282,35 @@ function Modal({
   );
 }
 
+
+
+
+
+
+
 export default function PortfolioPage() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [lang, setLang] = useState<'en' | 'no'>('en');
+  const [showPDF, setShowPDF] = useState(false);
+  const [pdfError, setPdfError] = useState<string | null>(null);
 
   const toggleLang = () => {
     setLang(lang === 'en' ? 'no' : 'en');
   };
+
+const prefetchFigmaEmbeds = () => {
+  projects.forEach(project => {
+    if (project.embed && project.embed.type === 'figma') {
+      const link = document.createElement('link');
+      link.rel = 'prefetch';
+      link.href = project.embed.url;
+      document.head.appendChild(link);
+    }
+  });
+};
+useEffect(() => {
+    prefetchFigmaEmbeds();
+  }, []);
 
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 300], [0, 50]);
@@ -305,6 +328,16 @@ export default function PortfolioPage() {
     if (projectsSection) {
       projectsSection.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  const handleViewResume = () => {
+    setShowPDF(true);
+    setPdfError(null);
+  };
+
+  const handlePDFError = (error: Error) => {
+    console.error("PDF error:", error);
+    setPdfError("Failed to load PDF. Please try again later.");
   };
 
   return (
@@ -356,20 +389,20 @@ export default function PortfolioPage() {
                 transition={{ duration: 0.8, delay: 0.6 }}
               >
                 {lang === 'en' 
-                  ? "Experienced full-stack developer with expertise in React, Node.js, and database technologies. Passionate about building scalable and user-friendly web applications."
-                  : "Erfaren full-stack utvikler med ekspertise innen React, Node.js og databaseteknologier. Lidenskapelig opptatt av å bygge skalerbare og brukervennlige webapplikasjoner."}
+                  ? "First-year master's student in Informatics: Design, Use, Interaction at the University of Oslo."
+                  : "Første årsstudent på master i informatikk: design, bruk, interaksjon ved Universitetet i Oslo."}
               </motion.p>
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.8 }}
               >
-                <Link
-                  href="#"
+                <button
+                  onClick={handleViewResume}
                   className="inline-flex h-12 items-center justify-center rounded-md bg-slate-800 px-8 text-base font-medium text-white shadow transition-colors hover:bg-slate-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-500 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 font-mono"
                 >
                   {lang === 'en' ? 'View Resume' : 'Se CV'}
-                </Link>
+                </button>
               </motion.div>
             </div>
             <motion.div 
@@ -422,7 +455,7 @@ export default function PortfolioPage() {
                 >
                   <div className="aspect-video overflow-hidden">
                     <Image
-                      src={project.image}
+                      src={project.id === 3 ? (project.thumbnailImage || project.image) : project.image}
                       width={600}
                       height={400}
                       alt={project.title[lang]}
@@ -450,6 +483,26 @@ export default function PortfolioPage() {
           />
         )}
       </AnimatePresence>
+      {showPDF && (
+        <PDFViewer 
+          file="/cv_camilla_szlagor.pdf" 
+          onClose={() => setShowPDF(false)}
+          onError={handlePDFError}
+        />
+      )}
+      {pdfError && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white p-4 rounded-lg max-w-md">
+            <p className="text-red-500">{pdfError}</p>
+            <button 
+              onClick={() => setPdfError(null)}
+              className="mt-4 px-4 py-2 bg-slate-800 text-white rounded-md"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
