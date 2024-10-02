@@ -112,30 +112,31 @@ const projects: Project[] = [
   },
 ];
 
+
 export function Modal({ project, onClose, lang }: { project: Project; onClose: () => void; lang: 'en' | 'no' }) {
-  const [showFullDescription, setShowFullDescription] = useState(false);
-  const [activeTab, setActiveTab] = useState<'features' | 'technologies'>('features');
-  const contentRef = useRef<HTMLDivElement>(null);
+  const [showFullDescription, setShowFullDescription] = useState(false)
+  const [activeTab, setActiveTab] = useState<'features' | 'technologies'>('features')
+  const contentRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
-        onClose();
+        onClose()
       }
-    };
+    }
 
-    document.addEventListener('keydown', handleEscape);
+    document.addEventListener('keydown', handleEscape)
 
     return () => {
-      document.removeEventListener('keydown', handleEscape);
-    };
-  }, [onClose]);
+      document.removeEventListener('keydown', handleEscape)
+    }
+  }, [onClose])
 
   const renderEmbed = () => {
     if (project.embed) {
       if (project.embed.type === 'figma') {
         return (
-          <div className="aspect-video mb-6 overflow-hidden rounded-lg">
+          <div className="aspect-video mb-8 overflow-hidden rounded-lg">
             <iframe 
               style={{border: '1px solid rgba(0, 0, 0, 0.1)'}} 
               width="100%" 
@@ -145,10 +146,10 @@ export function Modal({ project, onClose, lang }: { project: Project; onClose: (
               className="w-full h-full"
             ></iframe>
           </div>
-        );
+        )
       } else if (project.embed.type === 'youtube') {
         return (
-          <div className="aspect-video mb-6 overflow-hidden rounded-lg">
+          <div className="aspect-video mb-8 overflow-hidden rounded-lg">
             <iframe 
               width="100%" 
               height="100%" 
@@ -161,42 +162,35 @@ export function Modal({ project, onClose, lang }: { project: Project; onClose: (
               className="w-full h-full"
             ></iframe>
           </div>
-        );
+        )
       }
     }
     return (
-      <div className="aspect-video mb-6 overflow-hidden rounded-lg">
+      <div className="aspect-video mb-8 overflow-hidden rounded-lg">
         <Image
           src={project.image}
           alt={project.title[lang]}
-          width={600}
-          height={400}
+          width={1200}
+          height={675}
           className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
         />
       </div>
-    );
-  };
+    )
+  }
 
-
-const renderDescription = () => {
+  const renderDescription = () => {
     const paragraphs = project.detailedDescription[lang].split('\n\n')
     const visibleParagraphs = showFullDescription ? paragraphs : [paragraphs[0]]
 
     return (
       <div className="space-y-4">
         {visibleParagraphs.map((paragraph, index) => (
-          <motion.p 
-            key={index} 
-            className="text-[#4A5D4F] leading-relaxed text-lg"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-          >
+          <p key={index} className="text-[#4A5D4F] leading-relaxed text-base sm:text-lg">
             {paragraph}
-          </motion.p>
+          </p>
         ))}
         {paragraphs.length > 1 && !showFullDescription && (
-          <motion.button
+          <button
             onClick={() => {
               setShowFullDescription(true)
               if (contentRef.current) {
@@ -206,42 +200,38 @@ const renderDescription = () => {
               }
             }}
             className="flex items-center px-4 py-2 bg-[#E8E4DB] text-[#4A5D4F] rounded-md hover:bg-[#D9D4C9] transition-colors duration-200 font-mono text-sm font-medium"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: visibleParagraphs.length * 0.1 }}
           >
             {lang === 'en' ? 'Read more' : 'Les mer'}
             <ChevronDown className="ml-2" size={16} />
-          </motion.button>
+          </button>
         )}
       </div>
     )
   }
 
-
-const renderFeatures = () => (
-    <ul className="grid gap-4 sm:grid-cols-2">
+  const renderFeatures = () => (
+    <ul className="grid gap-4 sm:gap-6 sm:grid-cols-2">
       {project.features[lang].map((feature, index) => (
         <motion.li 
           key={index} 
-          className="flex items-start space-x-2"
+          className="flex items-start space-x-3"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: index * 0.1 }}
         >
           <Check className="text-[#7C9A82] mt-1 flex-shrink-0" size={20} />
-          <span className="text-[#4A5D4F] text-lg">{feature}</span>
+          <span className="text-[#4A5D4F] text-base sm:text-lg">{feature}</span>
         </motion.li>
       ))}
     </ul>
   )
 
   const renderTechnologies = () => (
-    <div className="flex flex-wrap gap-2">
+    <div className="flex flex-wrap gap-2 sm:gap-3">
       {project.technologies.map((tech, index) => (
         <motion.span 
           key={index} 
-          className="px-3 py-1 bg-[#E8E4DB] text-[#4A5D4F] rounded-full text-sm font-medium font-mono"
+          className="px-3 py-1 sm:px-4 sm:py-2 bg-[#E8E4DB] text-[#4A5D4F] rounded-full text-sm sm:text-base font-medium font-mono"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: index * 0.05 }}
@@ -251,6 +241,7 @@ const renderFeatures = () => (
       ))}
     </div>
   )
+
   return (
     <motion.div 
       initial={{ opacity: 0 }}
@@ -263,12 +254,12 @@ const renderFeatures = () => (
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.9, opacity: 0 }}
-        className="bg-[#F5F3EE] rounded-lg shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+        className="bg-[#F5F3EE] rounded-lg shadow-2xl w-full max-w-5xl max-h-[90vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="p-8">
-          <div className="flex justify-between items-start mb-6">
-            <h2 className="text-3xl font-bold text-[#4A5D4F] font-mono">
+        <div className="p-6 sm:p-8 md:p-10">
+          <div className="flex justify-between items-start mb-6 sm:mb-8">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#4A5D4F] font-mono">
               {project.title[lang]}
             </h2>
             <button
@@ -276,18 +267,18 @@ const renderFeatures = () => (
               className="text-[#4A5D4F] hover:text-[#2C3A2F] transition-colors"
               aria-label="Close modal"
             >
-              <X size={24} />
+              <X size={24} className="sm:size-32" />
             </button>
           </div>
           {renderEmbed()}
-          <div className="mb-6" ref={contentRef}>
+          <div className="mb-6 sm:mb-8" ref={contentRef}>
             {renderDescription()}
           </div>
-          <div className="mb-4">
-            <div className="flex space-x-2">
+          <div className="mb-6">
+            <div className="flex space-x-4">
               <button
                 onClick={() => setActiveTab('features')}
-                className={`px-4 py-2 rounded-md font-mono text-sm font-medium transition-colors duration-200 ${
+                className={`px-4 py-2 sm:px-6 sm:py-3 rounded-md font-mono text-sm sm:text-base font-medium transition-colors duration-200 ${
                   activeTab === 'features' ? 'bg-[#7C9A82] text-white' : 'bg-[#E8E4DB] text-[#4A5D4F]'
                 }`}
               >
@@ -295,7 +286,7 @@ const renderFeatures = () => (
               </button>
               <button
                 onClick={() => setActiveTab('technologies')}
-                className={`px-4 py-2 rounded-md font-mono text-sm font-medium transition-colors duration-200 ${
+                className={`px-4 py-2 sm:px-6 sm:py-3 rounded-md font-mono text-sm sm:text-base font-medium transition-colors duration-200 ${
                   activeTab === 'technologies' ? 'bg-[#7C9A82] text-white' : 'bg-[#E8E4DB] text-[#4A5D4F]'
                 }`}
               >
@@ -318,7 +309,13 @@ const renderFeatures = () => (
     </motion.div>
   )
 }
-   export default function PortfolioPage() {
+
+
+
+
+
+
+export default function PortfolioPage() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
   const [lang, setLang] = useState<'en' | 'no'>('en')
   const [showPDF, setShowPDF] = useState(false)
@@ -369,7 +366,7 @@ const renderFeatures = () => (
         </header>
         
         <motion.section 
-          className="min-h-[calc(100vh-80px)] flex flex-col justify-between pt-8 sm:pt-16 pb-8 relative"
+          className="min-h-[calc(100vh-80px)] flex flex-col justify-center pt-8 sm:pt-16 pb-8 relative"
         >
           <motion.div 
             className="grid items-start gap-8 sm:gap-12 lg:grid-cols-2"
@@ -447,21 +444,21 @@ const renderFeatures = () => (
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1 }}
         >
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-12 justify-items-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 justify-items-center">
             {projects.map((project, index) => (
               <motion.div
                 key={project.id}
                 initial={{ opacity: 0, y: 50 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="w-full max-w-sm sm:max-w-md lg:max-w-xl"
+                className="w-full max-w-sm sm:max-w-md lg:max-w-lg h-[calc((100vh-16rem)/3)] sm:h-auto"
               >
                 <motion.div
                   whileHover={{ y: -8 }}
                   className="group relative overflow-hidden rounded-xl bg-white shadow-lg transition-all duration-300 hover:shadow-xl cursor-pointer h-full"
                   onClick={() => setSelectedProject(project)}
                 >
-                  <div className="aspect-[4/3] overflow-hidden">
+                  <div className="aspect-[4/3] h-1/2 sm:h-auto overflow-hidden">
                     <Image
                       src={project.thumbnailImage || project.image}
                       width={1200}
@@ -470,11 +467,11 @@ const renderFeatures = () => (
                       className="h-full w-full object-cover transition-all duration-300 group-hover:scale-105"
                     />
                   </div>
-                  <div className="p-6 sm:p-8">
-                    <h3 className="text-2xl sm:text-3xl font-bold text-[#4A5D4F] mb-2 sm:mb-4 font-mono">
+                  <div className="p-4 sm:p-6 h-1/2 sm:h-auto flex flex-col justify-between">
+                    <h3 className="text-xl sm:text-2xl font-bold text-[#4A5D4F] mb-2 font-mono line-clamp-2">
                       {project.title[lang]}
                     </h3>
-                    <p className="text-[#6B7F70] text-base sm:text-xl">{project.description[lang]}</p>
+                    <p className="text-[#6B7F70] text-sm sm:text-base line-clamp-3">{project.description[lang]}</p>
                   </div>
                 </motion.div>
               </motion.div>
@@ -514,4 +511,3 @@ const renderFeatures = () => (
     </div>
   )
 }
-
