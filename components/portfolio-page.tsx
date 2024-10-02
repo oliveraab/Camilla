@@ -318,8 +318,7 @@ const renderFeatures = () => (
     </motion.div>
   )
 }
-
-export default function PortfolioPage() {
+   export default function PortfolioPage() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
   const [lang, setLang] = useState<'en' | 'no'>('en')
   const [showPDF, setShowPDF] = useState(false)
@@ -354,30 +353,31 @@ export default function PortfolioPage() {
   return (
     <div className="bg-[#F5F3EE] min-h-screen font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <header className="py-6 flex justify-between items-center sticky top-0 z-10 bg-[#F5F3EE] bg-opacity-90 backdrop-blur-sm">
-          <h1 className="text-2xl font-bold text-[#4A5D4F] font-mono">
+        <header className="py-4 sm:py-6 flex justify-between items-center sticky top-0 z-10 bg-[#F5F3EE] bg-opacity-90 backdrop-blur-sm">
+          <h1 className="text-xl sm:text-2xl font-bold text-[#4A5D4F] font-mono">
             {lang === 'en' ? 'Portfolio' : 'Portefølje'}
           </h1>
           <button
             onClick={toggleLang}
-            className="flex items-center space-x-2 px-3 py-2 bg-[#E8E4DB] text-[#4A5D4F] rounded-md hover:bg-[#D9D4C9] transition-colors border border-[#C5BFB3] shadow-sm"
+            className="flex items-center space-x-2 px-2 py-1 sm:px-3 sm:py-2 bg-[#E8E4DB] text-[#4A5D4F] rounded-md hover:bg-[#D9D4C9] transition-colors border border-[#C5BFB3] shadow-sm text-sm sm:text-base"
             aria-label={lang === 'en' ? 'Bytt til norsk' : 'Switch to English'}
           >
-            <Globe size={20} />
+            <Globe size={16} className="sm:hidden" />
+            <Globe size={20} className="hidden sm:block" />
             <span className="font-medium font-mono">{lang === 'en' ? 'EN' : 'NO'}</span>
           </button>
         </header>
         
         <motion.section 
-          className="min-h-[calc(100vh-80px)] flex flex-col justify-between pt-16 pb-8 relative"
+          className="min-h-[calc(100vh-80px)] flex flex-col justify-between pt-8 sm:pt-16 pb-8 relative"
         >
           <motion.div 
-            className="grid items-start gap-12 lg:grid-cols-2"
+            className="grid items-start gap-8 sm:gap-12 lg:grid-cols-2"
             style={{ y: y1 }}
           >
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               <motion.h2 
-                className="text-5xl font-bold tracking-tight sm:text-6xl md:text-7xl text-[#4A5D4F] font-mono"
+                className="text-4xl sm:text-5xl font-bold tracking-tight md:text-6xl lg:text-7xl text-[#4A5D4F] font-mono"
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
@@ -385,7 +385,7 @@ export default function PortfolioPage() {
                 Camilla Szlagor
               </motion.h2>
               <motion.h3 
-                className="text-3xl font-semibold text-[#6B7F70] font-mono"
+                className="text-2xl sm:text-3xl font-semibold text-[#6B7F70] font-mono"
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
@@ -393,7 +393,7 @@ export default function PortfolioPage() {
                 {lang === 'en' ? 'Interaction Designer' : 'Interaksjonsdesigner'}
               </motion.h3>
               <motion.p 
-                className="max-w-[600px] text-[#4A5D4F] text-xl leading-relaxed"
+                className="max-w-[600px] text-[#4A5D4F] text-lg sm:text-xl leading-relaxed"
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
@@ -409,7 +409,7 @@ export default function PortfolioPage() {
               >
                 <button
                   onClick={() => setShowPDF(true)}
-                  className="inline-flex h-12 items-center justify-center rounded-md bg-[#7C9A82] px-8 text-base font-medium text-white shadow transition-colors hover:bg-[#6B8A71] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4A5D4F] focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 font-mono"
+                  className="inline-flex h-10 sm:h-12 items-center justify-center rounded-md bg-[#7C9A82] px-6 sm:px-8 text-sm sm:text-base font-medium text-white shadow transition-colors hover:bg-[#6B8A71] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4A5D4F] focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 font-mono"
                 >
                   {lang === 'en' ? 'View Resume' : 'Se CV'}
                 </button>
@@ -419,7 +419,7 @@ export default function PortfolioPage() {
               className="flex justify-center lg:justify-end"
               style={{ y: y2 }}
             >
-              <div className="relative w-full max-w-[400px] aspect-square">
+              <div className="relative w-full max-w-[300px] sm:max-w-[400px] aspect-square">
                 <Image
                   src="/images/camilla.jpg"
                   fill
@@ -430,31 +430,31 @@ export default function PortfolioPage() {
             </motion.div>
           </motion.div>
           <motion.div 
-            className="text-center cursor-pointer mt-12"
+            className="text-center cursor-pointer mt-8 sm:mt-12"
             onClick={scrollToProjects}
             style={{ opacity }}
           >
-            <p className="text-[#4A5D4F] mb-2 text-3xl font-bold font-mono">{lang === 'en' ? 'Projects' : 'Prosjekter'}</p>
-            <ChevronDown size={40} className="mx-auto text-[#4A5D4F] animate-bounce" />
+            <p className="text-[#4A5D4F] mb-2 text-2xl sm:text-3xl font-bold font-mono">{lang === 'en' ? 'Projects' : 'Prosjekter'}</p>
+            <ChevronDown size={32} className="mx-auto text-[#4A5D4F] animate-bounce" />
           </motion.div>
         </motion.section>
 
         <motion.section 
           id="projects-section"
           ref={ref}
-          className="py-16 md:py-24 lg:py-32"
+          className="py-12 sm:py-16 md:py-24 lg:py-32"
           initial={{ opacity: 0, y: 100 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1 }}
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 justify-items-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-12 justify-items-center">
             {projects.map((project, index) => (
               <motion.div
                 key={project.id}
                 initial={{ opacity: 0, y: 50 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="w-full max-w-xl"
+                className="w-full max-w-sm sm:max-w-md lg:max-w-xl"
               >
                 <motion.div
                   whileHover={{ y: -8 }}
@@ -470,11 +470,11 @@ export default function PortfolioPage() {
                       className="h-full w-full object-cover transition-all duration-300 group-hover:scale-105"
                     />
                   </div>
-                  <div className="p-8">
-                    <h3 className="text-3xl font-bold text-[#4A5D4F] mb-4 font-mono">
+                  <div className="p-6 sm:p-8">
+                    <h3 className="text-2xl sm:text-3xl font-bold text-[#4A5D4F] mb-2 sm:mb-4 font-mono">
                       {project.title[lang]}
                     </h3>
-                    <p className="text-[#6B7F70] text-xl">{project.description[lang]}</p>
+                    <p className="text-[#6B7F70] text-base sm:text-xl">{project.description[lang]}</p>
                   </div>
                 </motion.div>
               </motion.div>
@@ -514,3 +514,4 @@ export default function PortfolioPage() {
     </div>
   )
 }
+
